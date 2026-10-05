@@ -1,0 +1,70 @@
+{
+  "name": "nawi-desktop",
+  "version": "1.0.0",
+  "description": "NAWI System Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --remote-debugging-port=9222",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux",
+    "zip:mac": "cd release && zip -r NAWI-System-mac.zip mac-arm64",
+    "zip:win": "cd release && zip -r NAWI-System-win.zip win-arm64-unpacked",
+    "zip:linux": "cd release && zip -r NAWI-System-linux.zip linux-arm64-unpacked"
+  },
+  "build": {
+    "appId": "com.nawi.system",
+    "productName": "NAWI System",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/.cache/**",
+      "!**/node_modules/puppeteer-core/**",
+      "!NAWI_user/voice_service/venv/**",
+      "!NAWI_user/voice_service/venv",
+      "!NAWI_user/voice_service/**/*.pyc",
+      "!NAWI_user/voice_service/**/__pycache__/**",
+      "!**/*.sh",
+      "!test.js",
+      "!release/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["arm64", "x64"]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "puppeteer-core": "^25.12.0"
+  }
+}

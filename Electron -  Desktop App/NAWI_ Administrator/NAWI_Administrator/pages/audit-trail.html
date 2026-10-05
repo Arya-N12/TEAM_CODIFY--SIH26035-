@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Audit Trail - Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/admin-style.css" />
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="brand-text">
+        <h2>Administrator</h2>
+        <span>OIML R-76 Platform</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-group-title">Overview</div>
+      <a href="../index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+      <div class="nav-group-title">User & Access</div>
+      <a href="./user-management.html" class="nav-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+      <a href="./roles-permissions.html" class="nav-item"><i class="fa-solid fa-user-shield"></i><span>Roles & Permissions</span></a>
+      <a href="./lab-management.html" class="nav-item"><i class="fa-solid fa-building-flag"></i><span>Lab Management</span></a>
+      <div class="nav-group-title">OIML Configuration</div>
+      <a href="./rule-packages.html" class="nav-item"><i class="fa-solid fa-file-code"></i><span>Rule Packages</span></a>
+      <a href="./test-config.html" class="nav-item"><i class="fa-solid fa-sliders"></i><span>Test Configuration</span></a>
+      <div class="nav-group-title">Platform Governance</div>
+      <a href="./reports-repo.html" class="nav-item"><i class="fa-solid fa-file-contract"></i><span>Reports Repository</span></a>
+      <a href="./documents.html" class="nav-item"><i class="fa-regular fa-folder-open"></i><span>Evidence Documents</span></a>
+      <div class="nav-group-title">Intelligence</div>
+      <a href="./ai-services.html" class="nav-item"><i class="fa-solid fa-microchip"></i><span>AI Services</span></a>
+      <a href="./knowledge-base.html" class="nav-item"><i class="fa-solid fa-book-atlas"></i><span>Knowledge Base</span></a>
+      <a href="./localization.html" class="nav-item"><i class="fa-solid fa-language"></i><span>Localization</span></a>
+      <div class="nav-group-title">Security & System</div>
+      <a href="./system-monitoring.html" class="nav-item"><i class="fa-solid fa-server"></i><span>System Monitoring</span></a>
+      <a href="./offline-sync.html" class="nav-item"><i class="fa-solid fa-rotate"></i><span>Offline Sync</span></a>
+      <a href="./security.html" class="nav-item"><i class="fa-solid fa-lock"></i><span>Security Settings</span></a>
+      <a href="./audit-trail.html" class="nav-item active"><i class="fa-solid fa-list-check"></i><span>Audit Trail</span></a>
+      <a href="./notifications.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i><span>Notifications</span></a>
+      <a href="./backup-settings.html" class="nav-item"><i class="fa-solid fa-hard-drive"></i><span>Backup & Recovery</span></a>
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">S</div>
+        <div class="user-meta"><strong>System Admin</strong><span>Superuser</span></div>
+      </div>
+      <a href="../../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>System Audit Trail</h1>
+        <p>Chronological, immutable record of administrative and system events.</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary"><i class="fa-solid fa-download"></i> Export Logs</button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      
+      <div class="card">
+        <div class="page-header mb-4" style="margin-bottom: 20px;">
+          <div class="search-filter-bar" style="margin: 0; width: 100%; flex-wrap: wrap;">
+            <div class="search-box" style="flex: 1 1 250px;">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="form-control" placeholder="Search event ID, user, object...">
+            </div>
+            <select class="form-control" style="width: 150px;">
+              <option>Time: Last 24 Hrs</option>
+              <option>Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>Custom Range</option>
+            </select>
+            <select class="form-control" style="width: 160px;">
+              <option>Module: All</option>
+              <option>User Management</option>
+              <option>Rule Package</option>
+              <option>Security</option>
+              <option>Authentication</option>
+              <option>System</option>
+            </select>
+            <select class="form-control" style="width: 150px;">
+              <option>Event Type: All</option>
+              <option>CREATE</option>
+              <option>UPDATE</option>
+              <option>DELETE/ARCHIVE</option>
+              <option>LOGIN</option>
+            </select>
+            <button class="btn btn-primary"><i class="fa-solid fa-filter"></i> Filter</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" style="font-family: monospace; font-size: 0.85rem;">
+            <thead>
+              <tr style="font-family: 'Plus Jakarta Sans', sans-serif;">
+                <th>Timestamp (UTC)</th>
+                <th>Event ID</th>
+                <th>Event Type</th>
+                <th>User / System</th>
+                <th>Module</th>
+                <th>Action Details</th>
+                <th>IP / Ref</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: var(--text-muted);">2026-10-04 10:25:11</td>
+                <td>EVT-893411</td>
+                <td><span class="badge badge-success">USER_CREATED</span></td>
+                <td>admin@nawi.gov.in</td>
+                <td>User Management</td>
+                <td>Created user: USR-1102 (Priya Singh) with role Administrator</td>
+                <td style="color: var(--text-muted);">192.168.1.42</td>
+              </tr>
+              <tr style="background-color: var(--color-red-light);">
+                <td style="color: var(--text-muted);">2026-10-04 09:12:45</td>
+                <td>EVT-893410</td>
+                <td><span class="badge badge-failed">LOGIN_FAILURE</span></td>
+                <td>unknown (v.patel@gujarat-metrology.in)</td>
+                <td>Authentication</td>
+                <td>Failed login attempt (Account Suspended)</td>
+                <td style="color: var(--text-muted);">203.0.113.89</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-muted);">2026-10-03 16:40:02</td>
+                <td>EVT-893409</td>
+                <td><span class="badge badge-purple">RULE_VALIDATED</span></td>
+                <td>SYSTEM</td>
+                <td>Rule Package</td>
+                <td>Schema validation passed for Package v2.5 (Draft)</td>
+                <td style="color: var(--text-muted);">Internal</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-muted);">2026-10-03 16:38:15</td>
+                <td>EVT-893408</td>
+                <td><span class="badge badge-info">RULE_UPLOADED</span></td>
+                <td>admin@nawi.gov.in</td>
+                <td>Rule Package</td>
+                <td>Uploaded draft rule package 'OIML_R76_v2.5.json' (Size: 45KB)</td>
+                <td style="color: var(--text-muted);">192.168.1.42</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-muted);">2026-10-03 14:22:10</td>
+                <td>EVT-893407</td>
+                <td><span class="badge badge-attention">SYNC_CONFLICT</span></td>
+                <td>SYSTEM</td>
+                <td>Sync Service</td>
+                <td>Conflict detected on Application APP-2026-089 (Field: temp_env)</td>
+                <td style="color: var(--text-muted);">Node-02</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-muted);">2026-10-03 11:05:33</td>
+                <td>EVT-893406</td>
+                <td><span class="badge badge-success">ROLE_CHANGED</span></td>
+                <td>admin@nawi.gov.in</td>
+                <td>User Management</td>
+                <td>Changed role of USR-042 from Lab Technician to Metrology Evaluator</td>
+                <td style="color: var(--text-muted);">192.168.1.42</td>
+              </tr>
+              <tr>
+                <td style="color: var(--text-muted);">2026-10-03 09:01:12</td>
+                <td>EVT-893405</td>
+                <td><span class="badge badge-success">LOGIN</span></td>
+                <td>admin@nawi.gov.in</td>
+                <td>Authentication</td>
+                <td>Successful login. Session ID: SES-9821</td>
+                <td style="color: var(--text-muted);">192.168.1.42</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-family: 'Plus Jakarta Sans', sans-serif;">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Showing 1 to 7 of 1,245 events</span>
+          <div style="display: flex; gap: 4px;">
+            <button class="btn btn-secondary" style="padding: 4px 10px;" disabled>Prev</button>
+            <button class="btn btn-primary" style="padding: 4px 12px;">1</button>
+            <button class="btn btn-secondary" style="padding: 4px 12px;">2</button>
+            <button class="btn btn-secondary" style="padding: 4px 12px;">3</button>
+            <span style="padding: 4px 8px; color: var(--text-muted);">...</span>
+            <button class="btn btn-secondary" style="padding: 4px 12px;">125</button>
+            <button class="btn btn-secondary" style="padding: 4px 10px;">Next</button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/admin-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI & Intelligent Services - Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/admin-style.css" />
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="brand-text">
+        <h2>Administrator</h2>
+        <span>OIML R-76 Platform</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-group-title">Overview</div>
+      <a href="../index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+      <div class="nav-group-title">User & Access</div>
+      <a href="./user-management.html" class="nav-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+      <a href="./roles-permissions.html" class="nav-item"><i class="fa-solid fa-user-shield"></i><span>Roles & Permissions</span></a>
+      <a href="./lab-management.html" class="nav-item"><i class="fa-solid fa-building-flag"></i><span>Lab Management</span></a>
+      <div class="nav-group-title">OIML Configuration</div>
+      <a href="./rule-packages.html" class="nav-item"><i class="fa-solid fa-file-code"></i><span>Rule Packages</span></a>
+      <a href="./test-config.html" class="nav-item"><i class="fa-solid fa-sliders"></i><span>Test Configuration</span></a>
+      <div class="nav-group-title">Platform Governance</div>
+      <a href="./reports-repo.html" class="nav-item"><i class="fa-solid fa-file-contract"></i><span>Reports Repository</span></a>
+      <a href="./documents.html" class="nav-item"><i class="fa-regular fa-folder-open"></i><span>Evidence Documents</span></a>
+      <div class="nav-group-title">Intelligence</div>
+      <a href="./ai-services.html" class="nav-item active"><i class="fa-solid fa-microchip"></i><span>AI Services</span></a>
+      <a href="./knowledge-base.html" class="nav-item"><i class="fa-solid fa-book-atlas"></i><span>Knowledge Base</span></a>
+      <a href="./localization.html" class="nav-item"><i class="fa-solid fa-language"></i><span>Localization</span></a>
+      <div class="nav-group-title">Security & System</div>
+      <a href="./system-monitoring.html" class="nav-item"><i class="fa-solid fa-server"></i><span>System Monitoring</span></a>
+      <a href="./offline-sync.html" class="nav-item"><i class="fa-solid fa-rotate"></i><span>Offline Sync</span></a>
+      <a href="./security.html" class="nav-item"><i class="fa-solid fa-lock"></i><span>Security Settings</span></a>
+      <a href="./audit-trail.html" class="nav-item"><i class="fa-solid fa-list-check"></i><span>Audit Trail</span></a>
+      <a href="./notifications.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i><span>Notifications</span></a>
+      <a href="./backup-settings.html" class="nav-item"><i class="fa-solid fa-hard-drive"></i><span>Backup & Recovery</span></a>
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">S</div>
+        <div class="user-meta"><strong>System Admin</strong><span>Superuser</span></div>
+      </div>
+     <a href="../../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>AI & Intelligent Services</h1>
+        <p>Monitor and configure intelligent assistance services.</p>
+      </div>
+      <div class="header-actions">
+        <button class="notification-btn"><i class="fa-regular fa-bell"></i><span class="notification-badge"></span></button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      
+      <!-- Governance Message -->
+      <div style="background-color: var(--color-purple-light); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: var(--radius-md); padding: 16px 20px; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 24px;">
+        <i class="fa-solid fa-circle-info" style="color: var(--color-purple); font-size: 1.5rem; margin-top: 2px;"></i>
+        <div>
+          <h3 style="color: var(--color-purple); font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Important Governance Notice</h3>
+          <p style="color: #4c1d95; font-size: 0.9rem; line-height: 1.5;">
+            AI services provide assistance, explanation, anomaly interpretation or validation. The deterministic <strong>OIML R-76 Rules Engine remains authoritative</strong> for all compliance PASS/FAIL decisions. AI outputs must never override the calculation engine.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Configured Services</h3>
+          <button class="btn btn-secondary"><i class="fa-solid fa-plus"></i> Add Service Connection</button>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Service Name</th>
+                <th>Model / Technology</th>
+                <th>Version</th>
+                <th>Status</th>
+                <th>Last Health Check</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium"><i class="fa-solid fa-eye" style="color: var(--text-muted); width: 20px;"></i> Optical Character Recognition (OCR)</td>
+                <td>Tesseract / Google Cloud Vision</td>
+                <td>v4.1.0</td>
+                <td><span class="badge badge-warning">Degraded</span></td>
+                <td>5 mins ago</td>
+                <td>
+                  <button class="btn-icon" title="Configure"><i class="fa-solid fa-gear"></i></button>
+                  <button class="btn-icon" title="View Logs"><i class="fa-solid fa-file-lines"></i></button>
+                  <button class="btn-icon" title="Test Health"><i class="fa-solid fa-stethoscope"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium"><i class="fa-solid fa-microphone" style="color: var(--text-muted); width: 20px;"></i> Voice Recognition (ASR)</td>
+                <td>Web Speech API / Local ASR</td>
+                <td>v1.0.0</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>10 mins ago</td>
+                <td>
+                  <button class="btn-icon" title="Configure"><i class="fa-solid fa-gear"></i></button>
+                  <button class="btn-icon" title="View Logs"><i class="fa-solid fa-file-lines"></i></button>
+                  <button class="btn-icon" title="Test Health"><i class="fa-solid fa-stethoscope"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium"><i class="fa-solid fa-chart-line" style="color: var(--text-muted); width: 20px;"></i> Anomaly Detection</td>
+                <td>Statistical Isolation Forest</td>
+                <td>v2.1.4</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>1 hour ago</td>
+                <td>
+                  <button class="btn-icon" title="Configure"><i class="fa-solid fa-gear"></i></button>
+                  <button class="btn-icon" title="View Logs"><i class="fa-solid fa-file-lines"></i></button>
+                  <button class="btn-icon" title="Test Health"><i class="fa-solid fa-stethoscope"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium"><i class="fa-solid fa-brain" style="color: var(--text-muted); width: 20px;"></i> RAG Knowledge Assistant</td>
+                <td>ChromaDB + Ollama</td>
+                <td>v0.5.2</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>2 mins ago</td>
+                <td>
+                  <button class="btn-icon" title="Configure"><i class="fa-solid fa-gear"></i></button>
+                  <button class="btn-icon" title="View Logs"><i class="fa-solid fa-file-lines"></i></button>
+                  <button class="btn-icon" title="Test Health"><i class="fa-solid fa-stethoscope"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium"><i class="fa-solid fa-comment-dots" style="color: var(--text-muted); width: 20px;"></i> Language Model (LLM)</td>
+                <td>Llama 3 (8B Instruct) - Local</td>
+                <td>v3-8b</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>2 mins ago</td>
+                <td>
+                  <button class="btn-icon" title="Configure"><i class="fa-solid fa-gear"></i></button>
+                  <button class="btn-icon" title="View Logs"><i class="fa-solid fa-file-lines"></i></button>
+                  <button class="btn-icon" title="Test Health"><i class="fa-solid fa-stethoscope"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium"><i class="fa-solid fa-lightbulb" style="color: var(--text-muted); width: 20px;"></i> Explainable AI (XAI)</td>
+                <td>SHAP / LIME Explainer</td>
+                <td>v1.0.0</td>
+                <td><span class="badge badge-inactive">Disabled</span></td>
+                <td>-</td>
+                <td>
+                  <button class="btn-icon" title="Enable"><i class="fa-solid fa-toggle-off"></i></button>
+                  <button class="btn-icon" title="Configure"><i class="fa-solid fa-gear"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/admin-script.js"></script>
+</body>
+</html>

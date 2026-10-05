@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAWI Test Management - OIML R-76 Compliance System</title>
+  
+  <!-- Font and Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/global.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR (WIDER WITH LARGER TYPOGRAPHY) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>NAWI Test Management</h2>
+        <span>OIML R-76 Compliance System</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="nav-menu">
+      <a href="./index.html" class="nav-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>Overview</span>
+      </a>
+      <a href="./pages/new-test.html" class="nav-item">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>New Test</span>
+      </a>
+      <a href="./pages/my-tests.html" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <span>My Tests</span>
+      </a>
+      <a href="./pages/test-evaluation.html" class="nav-item">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Test Evaluation</span>
+      </a>
+      <a href="./pages/Report.html" class="nav-item">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="./pages/instrment-repo.html" class="nav-item">
+        <i class="fa-solid fa-database"></i>
+        <span>Instrument Repository</span>
+      </a>
+
+      <!-- Personal Info Placed Directly After Report Repository -->
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+      
+      <a href="./pages/personal-info.html" class="nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile &amp; Account</span>
+      </a>
+
+<!-- Language Selector (Icon Based) -->
+      <div class="sidebar-lang-toggle" id="langToggleGroup">
+        <button class="lang-icon-btn active" data-val="English" title="English">EN</button>
+        <button class="lang-icon-btn" data-val="Marathi" title="मराठी (Marathi)">म</button>
+        <button class="lang-icon-btn" data-val="Hindi" title="हिंदी (Hindi)">हि</button>
+      </div>
+
+      <a href="../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>Overview</h1>
+        <p>Laboratory Testing &amp; Report Management</p>
+      </div>
+
+      <div class="header-actions">
+        <button class="notification-btn" aria-label="Notifications">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge"></span>
+        </button>
+        <div class="datetime-pill">
+          <i class="fa-regular fa-calendar"></i>
+          <div>
+            <span class="date-str">28 Sep 2026</span>
+            <span class="login-str">Last login: 10:24 AM</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Main Viewport -->
+    <main class="dashboard-content">
+      
+      <!-- Greeting Banner -->
+      <section class="welcome-banner">
+        <div class="user-welcome">
+          <div class="user-avatar-large">AS</div>
+          <div>
+            <h2>Welcome, Dr. Ananya Sharma</h2>
+            <p>Here's your laboratory testing activity and report overview.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- KPI Summary Cards -->
+      <section class="kpi-grid">
+        <article class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-blue"><i class="fa-regular fa-clipboard"></i></span>
+            <span class="kpi-label">Total Tests</span>
+          </div>
+          <div class="kpi-value">124</div>
+          <div class="kpi-subtext">All assigned tests</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-green"><i class="fa-solid fa-check"></i></span>
+            <span class="kpi-label">Completed Tests</span>
+          </div>
+          <div class="kpi-value">86</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-cyan"><i class="fa-regular fa-clock"></i></span>
+            <span class="kpi-label">Tests in Progress</span>
+          </div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-subtext">Currently active</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-amber"><i class="fa-solid fa-triangle-exclamation"></i></span>
+            <span class="kpi-label">Awaiting Review</span>
+          </div>
+          <div class="kpi-value">8</div>
+          <div class="kpi-subtext">Require attention</div>
+        </article>
+
+        <article class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-purple"><i class="fa-regular fa-file"></i></span>
+            <span class="kpi-label">Reports Generated</span>
+          </div>
+          <div class="kpi-value">78</div>
+          <div class="kpi-subtext">This testing cycle</div>
+        </article>
+      </section>
+
+      <!-- Charts Section -->
+      <section class="charts-grid">
+        <!-- Line Chart -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3>Testing Activity</h3>
+              <p>Completed evaluations over the last 6 months</p>
+            </div>
+            <select class="custom-select" id="activityFilter">
+              <option>Last 6 Months</option>
+              <option>Last Year</option>
+            </select>
+          </div>
+          <div class="chart-container">
+            <canvas id="testingActivityChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Donut Chart -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3>Test Status</h3>
+              <p>Current distribution of laboratory tests</p>
+            </div>
+          </div>
+          <div class="donut-chart-wrapper">
+            <div class="donut-canvas-container">
+              <canvas id="testStatusChart"></canvas>
+              <div class="donut-inner-text">
+                <span class="donut-num">110</span>
+                <span class="donut-sub">Total Tests</span>
+              </div>
+            </div>
+            <div class="status-legend" id="donutLegend">
+              <div class="legend-row">
+                <span class="legend-indicator completed"></span>
+                <span class="legend-name">Completed</span>
+                <span class="legend-val">86 (78.2%)</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-indicator in-progress"></span>
+                <span class="legend-name">In Progress</span>
+                <span class="legend-val">12 (10.9%)</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-indicator awaiting"></span>
+                <span class="legend-name">Awaiting Review</span>
+                <span class="legend-val">8 (7.3%)</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-indicator draft"></span>
+                <span class="legend-name">Draft</span>
+                <span class="legend-val">4 (3.6%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance Overview (Bar Chart) -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h3>Compliance Overview</h3>
+              <p>Evaluation results</p>
+            </div>
+            <select class="custom-select" id="complianceFilter">
+              <option>This Month</option>
+              <option>All Time</option>
+            </select>
+          </div>
+          <div class="chart-container">
+            <canvas id="complianceChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tables Grid (Active Evaluations & Recent Reports) -->
+      <section class="tables-grid">
+        <!-- Active Evaluations Table -->
+        <div class="card table-card">
+          <div class="card-header">
+            <div>
+              <h3>Active Evaluations</h3>
+            </div>
+            <a href="#" class="view-link">View All <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Test ID</th>
+                  <th>Manufacturer</th>
+                  <th>Model</th>
+                  <th>Progress</th>
+                  <th>Current Stage</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">NAWI-2026-014</td>
+                  <td>Apex Weigh Systems</td>
+                  <td>AWS-3000</td>
+                  <td class="progress-col">
+                    <div class="progress-wrap">
+                      <div class="progress-bar"><div class="fill" style="width: 70%;"></div></div>
+                      <span class="progress-text">70%</span>
+                    </div>
+                  </td>
+                  <td>Repeatability Test</td>
+                  <td><span class="badge badge-in-progress">In Progress</span></td>
+                  <td><button class="table-btn btn-action-blue">Continue</button></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">NAWI-2026-011</td>
+                  <td>Precision Instruments Ltd</td>
+                  <td>PI-500</td>
+                  <td class="progress-col">
+                    <div class="progress-wrap">
+                      <div class="progress-bar green-bar"><div class="fill" style="width: 92%;"></div></div>
+                      <span class="progress-text">92%</span>
+                    </div>
+                  </td>
+                  <td>Final Evaluation</td>
+                  <td><span class="badge badge-awaiting">Awaiting Review</span></td>
+                  <td><button class="table-btn btn-action-blue">Review</button></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">NAWI-2026-009</td>
+                  <td>Metro Scale Technologies</td>
+                  <td>MST-200</td>
+                  <td class="progress-col">
+                    <div class="progress-wrap">
+                      <div class="progress-bar"><div class="fill" style="width: 41%;"></div></div>
+                      <span class="progress-text">41%</span>
+                    </div>
+                  </td>
+                  <td>Accuracy Test</td>
+                  <td><span class="badge badge-in-progress">In Progress</span></td>
+                  <td><button class="table-btn btn-action-blue">Continue</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent Reports Table -->
+        <div class="card table-card">
+          <div class="card-header">
+            <div>
+              <h3>Recent Reports</h3>
+            </div>
+            <a href="#" class="view-link">View Repository <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Model</th>
+                  <th>Date</th>
+                  <th>Result</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">RPT-2026-087</td>
+                  <td>AWS-3000</td>
+                  <td>28 Sep 2026</td>
+                  <td><span class="badge badge-pass">PASS</span></td>
+                  <td><span class="badge badge-generated">Generated</span></td>
+                  <td class="action-icon-cell"><button class="icon-link"><i class="fa-regular fa-eye"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">RPT-2026-084</td>
+                  <td>PI-500</td>
+                  <td>26 Sep 2026</td>
+                  <td><span class="badge badge-pass">PASS</span></td>
+                  <td><span class="badge badge-submitted">Submitted</span></td>
+                  <td class="action-icon-cell"><button class="icon-link"><i class="fa-regular fa-eye"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">RPT-2026-081</td>
+                  <td>MST-200</td>
+                  <td>24 Sep 2026</td>
+                  <td><span class="badge badge-fail">FAIL</span></td>
+                  <td><span class="badge badge-generated">Generated</span></td>
+                  <td class="action-icon-cell"><button class="icon-link"><i class="fa-regular fa-eye"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW SECTION: Resources -->
+      <section class="quick-actions-section" style="margin-top: 10px;">
+        <h3 class="section-heading">Resources</h3>
+        
+        <!-- Overriding grid columns to 3 for these cards -->
+        <div class="actions-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+          
+          <!-- Card 1: Official OIML R 76-1 PDF -->
+          <a href="https://www.oiml.org/en/publications/recommendations/en/files/pdf_r/r076-1-e06.pdf" target="_blank" class="action-tile" style="text-decoration: none; color: inherit;">
+            <div class="tile-icon" style="background-color: #fef2f2; color: #ef4444;"><i class="fa-regular fa-file-pdf"></i></div>
+            <div class="tile-text">
+              <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 2px;">Official Standard</span>
+              <h4 style="font-size: 1.05rem;">OIML R 76-1:2006 (E)</h4>
+              <p>Non-automatic weighing instruments</p>
+            </div>
+            <i class="fa-solid fa-download tile-arrow" style="font-size: 0.9rem;"></i>
+          </a>
+
+          <!-- Card 2: Official OIML R 76-2 PDF -->
+          <a href="https://www.oiml.org/en/publications/recommendations/en/files/pdf_r/r076-1-e06.pdf" target="_blank" class="action-tile" style="text-decoration: none; color: inherit;">
+            <div class="tile-icon" style="background-color: #fef2f2; color: #ef4444;"><i class="fa-regular fa-file-pdf"></i></div>
+            <div class="tile-text">
+              <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 2px;">Report Standard</span>
+              <h4 style="font-size: 1.05rem;">OIML R 76-2:2007 (E)</h4>
+              <p>Pattern Evaluation Test Report Format</p>
+            </div>
+            <i class="fa-solid fa-download tile-arrow" style="font-size: 0.9rem;"></i>
+          </a>
+
+          <!-- Card 3: Official OIML Portal Link -->
+          <a href="https://www.oiml.org/en/publications/recommendations/publication_view?p_type=1&p_status=1" target="_blank" class="action-tile" style="text-decoration: none; color: inherit;">
+            <div class="tile-icon" style="background-color: #eff6ff; color: #0b57d0;"><i class="fa-solid fa-globe"></i></div>
+            <div class="tile-text">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 2px;">Official Portal</span>
+              <h4 style="font-size: 1.05rem;">OIML Recommendations</h4>
+              <p>External Web Database</p>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square tile-arrow" style="font-size: 0.9rem;"></i>
+          </a>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- External Script -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/script.js"></script>
+
+  <!-- Floating Chatbot Button -->
+  <button type="button" class="floating-chatbot-btn" aria-label="Open Chatbot Assistant" aria-expanded="false" aria-controls="chatbotPanel">
+    <i class="fa-regular fa-comments" aria-hidden="true"></i>
+    <span>Chat with AI</span>
+  </button>
+  <script src="./js/chat-widget.js"></script>
+
+</body>
+</html>

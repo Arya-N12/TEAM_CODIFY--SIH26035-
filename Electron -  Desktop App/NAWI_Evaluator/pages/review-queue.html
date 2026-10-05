@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metrology Evaluator - Review Queue</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <link rel="stylesheet" href="../../NAWI_user/css/global.css">
+  <link rel="stylesheet" href="../../NAWI_user/css/style.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/review-queue.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>Metrology Evaluator</h2>
+        <span>OIML R-76 Compliance</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="nav-menu" id="mainNav">
+      <a href="dashboard.html" class="nav-item" id="nav-dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="review-queue.html" class="nav-item active" id="nav-review-queue">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Review Queue</span>
+      </a>
+      <a href="review-workspace.html" class="nav-item" id="nav-review-workspace" style=\"display: none;\">
+        <i class="fa-solid fa-laptop-medical"></i>
+        <span>Review Workspace</span>
+      </a>
+      <a href="approvals.html" class="nav-item" id="nav-approvals">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Approvals</span>
+      </a>
+      <a href="reports.html" class="nav-item" id="nav-reports">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="repository.html" class="nav-item" id="nav-repository">
+        <i class="fa-solid fa-database"></i>
+        <span>Repository</span>
+      </a>
+      <a href="notifications.html" class="nav-item" id="nav-notifications">
+        <i class="fa-regular fa-bell"></i>
+        <span>Notifications</span>
+      </a>
+      <a href="audit-trail.html" class="nav-item" id="nav-audit-trail">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>Audit Trail</span>
+      </a>
+
+      <div class="nav-divider"></div>
+      
+      <!-- R-76 Assistant Trigger -->
+      <a href="#" class="nav-item" id="assistantBtn">
+        <i class="fa-solid fa-robot" style="color: var(--color-purple)"></i>
+        <span>R-76 Assistant</span>
+      </a>
+
+      <div class="personal-info-card" style="margin-top: 10px;">
+        <div class="user-avatar-small">MR</div>
+        <div class="user-meta">
+          <strong>Michael Reviewer</strong>
+          <span>Senior Metrology Evaluator</span>
+        </div>
+      </div>
+      
+      <a href="../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles" id="headerTitles">
+        <h1>Review Queue</h1>
+        <p>Review and manage laboratory test submissions awaiting evaluator action.</p>
+      </div>
+
+      <div class="header-actions">
+        <div class="rule-version-pill">
+          <i class="fa-solid fa-book-open"></i> OIML R-76 v2006.1
+        </div>
+        <button class="notification-btn" aria-label="Notifications" onclick="window.location.href='notifications.html'">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge"></span>
+        </button>
+        <div class="datetime-pill">
+          <i class="fa-regular fa-calendar"></i>
+          <div>
+            <span class="date-str" id="currentDate">02 Oct 2026</span>
+            <span class="login-str">Last login: 08:15 AM</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Main Viewport -->
+    <main class="dashboard-content" id="mainContent">
+<div class="card filters-card" style="margin-bottom: 20px;">
+          <div class="filters-header">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="queueSearch" placeholder="Search by App No, Model, Manufacturer...">
+            </div>
+            <div class="filter-actions">
+              <select class="custom-select" id="filterStatus">
+                <option value="">All Statuses</option>
+                <option value="Ready for Review">Ready for Review</option>
+                <option value="Under Review">Under Review</option>
+                <option value="Needs Correction">Needs Correction</option>
+              </select>
+              <select class="custom-select" id="filterFlags">
+                <option value="">All Flags</option>
+                <option value="Anomaly">Anomaly Present</option>
+                <option value="OCR">OCR Mismatch</option>
+                <option value="Fail">Failed Test</option>
+              </select>
+              <button class="btn-outline"><i class="fa-solid fa-filter"></i> More Filters</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card table-card">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>App Number</th>
+                  <th>Manufacturer / Model</th>
+                  <th>Class</th>
+                  <th>Max / Min</th>
+                  <th>e / d</th>
+                  <th>Technician</th>
+                  <th>Result Summary</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="fullQueueTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </main>
+  </div>
+  
+  <!-- Right R-76 Assistant Panel -->
+  <div class="chatbot-panel" id="assistantPanel" hidden>
+    <div class="chatbot-panel-header">
+      <div class="chatbot-panel-title">
+        <i class="fa-solid fa-robot"></i> R-76 Knowledge Assistant
+      </div>
+      <div class="chatbot-panel-actions">
+        <button id="closeAssistantBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="chatbot-panel-messages" id="chatbotMessages">
+      <div class="chatbot-message bot">
+        Hello Evaluator. I am the OIML R-76 Knowledge Assistant. I can help explain compliance calculations, interpret anomalies, and quote procedure guidelines. I cannot modify the authoritative compliance decisions.
+      </div>
+      <div class="chatbot-message user">
+        Why did the Eccentricity test fail for APP-2026-081?
+      </div>
+      <div class="chatbot-message bot">
+        The eccentricity test failed because the calculated error at the Back Right position (0.15 kg) exceeded the Maximum Permissible Error (MPE) of ±0.10 kg for a Class III instrument at 1500e load.
+        <span class="chatbot-source">Source: OIML R-76-1 (2006) Section 3.6.2</span>
+      </div>
+    </div>
+    <div class="chatbot-compose">
+      <textarea id="assistantInput" placeholder="Ask a technical question..."></textarea>
+      <button onclick="sendAssistantMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="confirmModal" style="display:none;">
+    <div class="modal card">
+      <h3 id="modalTitle">Confirm Action</h3>
+      <p id="modalBody" class="mt-2 text-muted">Are you sure you want to perform this action?</p>
+      <div class="mt-4 text-right">
+        <button class="btn-outline mr-2" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" id="modalConfirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/review-queue.js"></script>
+</body>
+</html>

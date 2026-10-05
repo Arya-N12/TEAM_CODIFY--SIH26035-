@@ -1,0 +1,1977 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Test — OIML R-76 NAWI Compliance System</title>
+
+    <!-- Typography & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="../css/new-test.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/voice-entry.css" />
+
+    <style>
+      /* Added temporary badge styles for the new testing table */
+      .badge-pending {
+        background-color: #f1f5f9;
+        color: #475569;
+      }
+      .badge-fail {
+        background-color: #fef2f2;
+        color: #991b1b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- FIXED LEFT SIDEBAR (No Scrollbar, Personal Info After Report Repository) -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-scale-balanced"></i>
+        </div>
+        <div class="brand-text">
+          <h2>NAWI Test Management</h2>
+          <span>OIML R-76 Compliance System</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="../index.html" class="nav-item">
+          <i class="fa-solid fa-house"></i>
+          <span>Overview</span>
+        </a>
+        <a href="../pages/new-test.html" class="nav-item active">
+          <i class="fa-solid fa-circle-plus"></i>
+          <span>New Test</span>
+        </a>
+        <a href="../pages/my-tests.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <span>My Tests</span>
+        </a>
+        <a href="../pages/test-evaluation.html" class="nav-item">
+          <i class="fa-solid fa-clipboard-check"></i>
+          <span>Test Evaluation</span>
+        </a>
+        <a href="../pages/Report.html" class="nav-item">
+          <i class="fa-regular fa-file-lines"></i>
+          <span>Reports</span>
+        </a>
+        <a href="../pages/instrment-repo.html" class="nav-item">
+          <i class="fa-solid fa-database"></i>
+          <span>Instrument Repository</span>
+        </a>
+
+        <!-- Personal Info Placed Directly After Report Repository -->
+        <div class="nav-divider"></div>
+        <div class="personal-info-card">
+          <div class="user-avatar-small">AS</div>
+          <div class="user-meta">
+            <strong>Dr. Ananya Sharma</strong>
+            <span>Lead Testing Officer</span>
+          </div>
+        </div>
+
+        <a href="../pages/personal-info.html" class="nav-item">
+          <i class="fa-regular fa-user"></i>
+          <span>Profile &amp; Account</span>
+        </a>
+        <a href="#" class="nav-item logout-link">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN SCROLLABLE CONTENT VIEWPORT -->
+    <div class="main-wrapper">
+      <!-- Top Header Sticky Bar -->
+      <header class="top-header">
+        <div class="header-titles">
+          <div class="title-with-badge">
+            <h1>New Test</h1>
+            <span class="badge-status-draft" id="headerStatusBadge">Draft</span>
+            <span class="badge-id-pill" id="headerTestIdPill"
+              >ID: NAWI-2026-015</span
+            >
+          </div>
+          <p>
+            Create a new test record for a Non-Automatic Weighing Instrument and
+            prepare it for OIML R-76 evaluation.
+          </p>
+        </div>
+
+        <div class="header-actions">
+          <button type="button" class="btn-secondary" id="topBtnSaveDraft">
+            <i class="fa-regular fa-floppy-disk"></i> Save as Draft
+          </button>
+          <button
+            type="button"
+            class="btn-primary"
+            id="topBtnStartEvaluation"
+            disabled
+          >
+            Start Evaluation <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Registration Form Workspace -->
+      <main class="dashboard-content">
+        <form id="newTestForm" onsubmit="return false;">
+          <!-- 01. TEST REGISTRATION -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">01</div>
+              <div>
+                <h3>Test Registration</h3>
+                <p>System-generated test identity and baseline metadata</p>
+              </div>
+            </div>
+
+            <div class="form-grid grid-3">
+              <div class="form-group">
+                <label>Test ID</label>
+                <input
+                  type="text"
+                  id="regTestId"
+                  value="NAWI-2026-015"
+                  readonly
+                  class="input-readonly"
+                />
+                <span class="field-hint">Auto-generated record key</span>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Application / Reference No.
+                  <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="regAppNo"
+                  placeholder="e.g., APP-R76-2026-088"
+                  required
+                  value="APP-R76-2026-088"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Test Date</label>
+                <input type="date" id="regTestDate" value="2026-09-29" />
+              </div>
+
+              <div class="form-group">
+                <label>Testing Officer</label>
+                <input
+                  type="text"
+                  id="regOfficer"
+                  value="Dr. Ananya Sharma"
+                  readonly
+                  class="input-readonly"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Laboratory</label>
+                <input
+                  type="text"
+                  id="regLab"
+                  value="Regional Legal Metrology Laboratory"
+                  readonly
+                  class="input-readonly"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Test Type <span class="required">*</span></label>
+                <select id="regTestType">
+                  <option value="Model Approval" selected>
+                    Model Approval (Full Evaluation)
+                  </option>
+                  <option value="Verification">Initial Verification</option>
+                  <option value="Re-verification">
+                    Subsequent Re-verification
+                  </option>
+                  <option value="Surveillance">
+                    Market Surveillance Evaluation
+                  </option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- 02. APPLICANT & MANUFACTURER DETAILS -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">02</div>
+              <div>
+                <h3>Applicant &amp; Manufacturer Details</h3>
+                <p>
+                  Separation of submitting entity and equipment manufacturer
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-mic"
+                aria-label="Enable voice input for Applicant Details"
+                data-voice-section="applicant"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+
+            <div class="sub-section-title">
+              <i class="fa-solid fa-building"></i> Applicant Information
+              (Submitting Entity)
+            </div>
+            <div class="form-grid grid-3">
+              <div class="form-group">
+                <label
+                  >Applicant / Submitter Name
+                  <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="appName"
+                  placeholder="e.g., Metrology Logistics Pvt Ltd"
+                  value="Apex Weigh Systems Ltd"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Contact Person</label>
+                <input
+                  type="text"
+                  id="appContact"
+                  placeholder="Full name"
+                  value="Rajesh Mehta"
+                />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  id="appEmail"
+                  placeholder="contact@domain.com"
+                  value="rmehta@apexweigh.com"
+                />
+              </div>
+              <div class="form-group span-2">
+                <label>Applicant Address <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="appAddress"
+                  placeholder="Street, City, State, Postal Code"
+                  value="Plot 44, Electronic City, Phase 1, Bengaluru"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Country <span class="required">*</span></label>
+                <input type="text" id="appCountry" value="India" required />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input
+                  type="tel"
+                  id="appPhone"
+                  placeholder="+91 98765 43210"
+                  value="+91 98450 11223"
+                />
+              </div>
+              <div class="form-group">
+                <label>Submission Reference No.</label>
+                <input type="text" id="appSubRef" value="REF-AWS-2026-X9" />
+              </div>
+              <div class="form-group">
+                <label>Manufacturer Reg. Number (if applicable)</label>
+                <input type="text" id="appRegNo" value="IND-LM-2024-8891" />
+              </div>
+            </div>
+
+            <div class="sub-section-title" style="margin-top: 20px">
+              <i class="fa-solid fa-industry"></i> Manufacturer Details
+              <label class="same-as-checkbox">
+                <input type="checkbox" id="sameAsApplicant" /> Same as Applicant
+              </label>
+            </div>
+            <div class="form-grid grid-3">
+              <div class="form-group">
+                <label>Manufacturer Name <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="mfrName"
+                  value="Apex Weigh Systems Ltd"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  >Country of Manufacture <span class="required">*</span></label
+                >
+                <input type="text" id="mfrCountry" value="India" required />
+              </div>
+              <div class="form-group span-3">
+                <label>Manufacturer Address</label>
+                <input
+                  type="text"
+                  id="mfrAddress"
+                  value="Plot 44, Electronic City, Phase 1, Bengaluru"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- 03. INSTRUMENT IDENTIFICATION -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">03</div>
+              <div>
+                <h3>Instrument Identification</h3>
+                <p>
+                  Physical and regulatory identification of the NAWI submitted
+                  for evaluation
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-mic"
+                aria-label="Enable voice input for Instrument Identification"
+                data-voice-section="instrument"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+
+            <div class="form-grid grid-3">
+              <div class="form-group">
+                <label>Instrument Type <span class="required">*</span></label>
+                <select id="instType" required>
+                  <option value="Electronic weighing instrument" selected>
+                    Electronic Weighing Instrument
+                  </option>
+                  <option value="Platform scale">Platform Scale</option>
+                  <option value="Weighbridge">
+                    Weighbridge (Vehicle Scale)
+                  </option>
+                  <option value="Counter Scale">Counter Scale</option>
+                  <option value="Precision Balance">Precision Balance</option>
+                  <option value="Other NAWI">Other NAWI</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Model / Type Designation
+                  <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="instModel"
+                  placeholder="e.g., AWS-3000"
+                  value="AWS-3000"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Serial Number <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="instSerial"
+                  placeholder="e.g., SN-2026-98102"
+                  value="AWS-98102-B"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Identification / Sample ID
+                  <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="instSampleId"
+                  placeholder="e.g., SMP-01"
+                  value="SMP-01"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Instrument Trade Name</label>
+                <input
+                  type="text"
+                  id="instTradeName"
+                  placeholder="e.g., Apex Precision Pro"
+                  value="Apex Heavy-Duty Bench 3000"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Number of Samples Received</label>
+                <input type="number" id="instSampleCount" value="1" min="1" />
+              </div>
+
+              <div class="form-group">
+                <label>Intended Use</label>
+                <input
+                  type="text"
+                  id="instIntendedUse"
+                  value="Commercial / Industrial trade transactions"
+                />
+              </div>
+
+              <div class="form-group span-2">
+                <label>Place / Environment of Intended Use</label>
+                <input
+                  type="text"
+                  id="instEnvPlace"
+                  value="Dry indoor industrial processing &amp; packaging facility"
+                />
+              </div>
+            </div>
+
+            <!-- Photograph Upload Widget -->
+            <div class="photo-upload-wrapper">
+              <label class="photo-box-label"
+                ><i class="fa-solid fa-camera"></i> Upload Instrument
+                Photographs</label
+              >
+              <p class="photo-box-sub">
+                Front view, Side view, Nameplate, Identification plate &amp;
+                seal locations (Max 5MB each)
+              </p>
+
+              <div class="photo-grid">
+                <div class="photo-slot" onclick="triggerPhotoUpload('front')">
+                  <input
+                    type="file"
+                    id="photoFront"
+                    accept="image/*"
+                    style="display: none"
+                    onchange="
+                      handlePhotoUpload(this, 'previewFront', 'Front View')
+                    "
+                  />
+                  <div class="photo-placeholder" id="previewFront">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Front View</span>
+                  </div>
+                </div>
+
+                <div class="photo-slot" onclick="triggerPhotoUpload('side')">
+                  <input
+                    type="file"
+                    id="photoSide"
+                    accept="image/*"
+                    style="display: none"
+                    onchange="
+                      handlePhotoUpload(this, 'previewSide', 'Side View')
+                    "
+                  />
+                  <div class="photo-placeholder" id="previewSide">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Side View</span>
+                  </div>
+                </div>
+
+                <div
+                  class="photo-slot"
+                  onclick="triggerPhotoUpload('nameplate')"
+                >
+                  <input
+                    type="file"
+                    id="photoNameplate"
+                    accept="image/*"
+                    style="display: none"
+                    onchange="
+                      handlePhotoUpload(this, 'previewNameplate', 'Nameplate')
+                    "
+                  />
+                  <div class="photo-placeholder" id="previewNameplate">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Nameplate</span>
+                  </div>
+                </div>
+
+                <div class="photo-slot" onclick="triggerPhotoUpload('idplate')">
+                  <input
+                    type="file"
+                    id="photoIdplate"
+                    accept="image/*"
+                    style="display: none"
+                    onchange="
+                      handlePhotoUpload(this, 'previewIdplate', 'ID / Sealing')
+                    "
+                  />
+                  <div class="photo-placeholder" id="previewIdplate">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Identification Plate</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 04. LABORATORY / ENVIRONMENTAL CONDITIONS -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">04</div>
+              <div>
+                <h3>Laboratory / Environmental Conditions</h3>
+                <p>
+                  Record initial testing environment to ensure validity under
+                  OIML reference limits
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-mic"
+                aria-label="Enable voice input for Environmental Conditions"
+                data-voice-section="environment"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+
+            <div class="form-grid grid-4">
+              <div class="form-group">
+                <label>Laboratory Name</label>
+                <input
+                  type="text"
+                  id="envLabName"
+                  value="RLML Bangalore - Chamber 2"
+                  class="input-readonly"
+                  readonly
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Location / Room</label>
+                <input
+                  type="text"
+                  id="envLocation"
+                  value="Environmental Test Lab, Room 104"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Test Start Time</label>
+                <input type="time" id="envStartTime" value="10:30" />
+              </div>
+
+              <div class="form-group">
+                <label>Test End Time (Estimated)</label>
+                <input type="time" id="envEndTime" value="17:00" />
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Ambient Temperature <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="envTemp"
+                    value="23.4"
+                    step="0.1"
+                    required
+                    oninput="validateEnvironment()"
+                  />
+                  <select class="unit-select">
+                    <option value="C" selected>°C</option>
+                    <option value="F">°F</option>
+                    <option value="K">K</option>
+                  </select>
+                </div>
+                <span class="field-hint">Permissible: 20.0 °C to 26.0 °C</span>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Relative Humidity (RH) <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="envRH"
+                    value="48"
+                    step="1"
+                    required
+                    oninput="validateEnvironment()"
+                  />
+                  <select class="unit-select">
+                    <option value="%" selected>%</option>
+                    <option value="%RH">%RH</option>
+                  </select>
+                </div>
+                <span class="field-hint">Permissible: 30% to 70%</span>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Atmospheric Pressure <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="envPress"
+                    value="1013.2"
+                    step="0.1"
+                    required
+                  />
+                  <select class="unit-select">
+                    <option value="hPa" selected>hPa</option>
+                    <option value="mbar">mbar</option>
+                    <option value="kPa">kPa</option>
+                    <option value="mmHg">mmHg</option>
+                    <option value="inHg">inHg</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Environmental Status</label>
+                <div id="envStatusBox" class="env-status-banner status-valid">
+                  <i class="fa-solid fa-circle-check"></i> Conditions Recorded
+                  &amp; Valid
+                </div>
+              </div>
+
+              <div class="form-group span-4">
+                <label>Environmental Observations &amp; Vibration Notes</label>
+                <input
+                  type="text"
+                  id="envNotes"
+                  placeholder="No excessive air currents; anti-vibration table active."
+                  value="No excessive air currents; instrument levelled and warmed up for 30 minutes."
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- 05. TECHNICAL SPECIFICATIONS -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">05</div>
+              <div>
+                <h3>Technical Specifications</h3>
+                <p>
+                  Metrological characteristics and operational parameters under
+                  OIML R-76
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-mic"
+                aria-label="Enable voice input for Technical Specifications"
+                data-voice-section="specifications"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+
+            <div class="sub-section-title">
+              <i class="fa-solid fa-compass-drafting"></i> Metrological
+              Characteristics
+            </div>
+            <div class="form-grid grid-4">
+              <div class="form-group">
+                <label>Accuracy Class <span class="required">*</span></label>
+                <select id="specClass" required>
+                  <option value="Class I (Special)">Class I (Special)</option>
+                  <option value="Class II (High)">Class II (High)</option>
+                  <option value="Class III (Medium)" selected>
+                    Class III (Medium)
+                  </option>
+                  <option value="Class IIII (Ordinary)">
+                    Class IIII (Ordinary)
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Maximum Capacity (Max) <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="specMax"
+                    value="3000"
+                    step="any"
+                    required
+                  />
+                  <select class="unit-select">
+                    <option value="kg" selected>kg</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="t">t</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Minimum Capacity (Min) <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="specMin"
+                    value="20"
+                    step="any"
+                    required
+                  />
+                  <select class="unit-select">
+                    <option value="kg" selected>kg</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="t">t</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Verification Scale Interval (e)
+                  <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="specE"
+                    value="1"
+                    step="any"
+                    required
+                  />
+                  <select class="unit-select">
+                    <option value="kg" selected>kg</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="t">t</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  >Actual Scale Interval (d)
+                  <span class="required">*</span></label
+                >
+                <div class="input-unit">
+                  <input
+                    type="number"
+                    id="specD"
+                    value="1"
+                    step="any"
+                    required
+                  />
+                  <select class="unit-select">
+                    <option value="kg" selected>kg</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="t">t</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Number of Intervals (n)</label>
+                <input
+                  type="number"
+                  id="specN"
+                  value="3000"
+                  readonly
+                  class="input-readonly"
+                />
+                <span class="field-hint">Calculated: Max / e</span>
+              </div>
+
+              <div class="form-group">
+                <label>Maximum Tare (T)</label>
+                <div class="input-unit">
+                  <input type="number" id="specTare" value="1500" step="any" />
+                  <select class="unit-select">
+                    <option value="kg" selected>kg</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="t">t</option>
+                    <option value="lb">lb</option>
+                    <option value="oz">oz</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Tare Device Type</label>
+                <select id="specTareDevice">
+                  <option value="Subtractive Tare" selected>
+                    Subtractive Tare
+                  </option>
+                  <option value="Additive Tare">Additive Tare</option>
+                  <option value="Preset Tare">Preset Tare</option>
+                  <option value="No Tare Device">No Tare</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sub-section-title" style="margin-top: 20px">
+              <i class="fa-solid fa-microchip"></i> Instrument Hardware &amp;
+              Operational Characteristics
+            </div>
+            <div class="form-grid grid-4">
+              <div class="form-group">
+                <label>Load Cell Type</label>
+                <input
+                  type="text"
+                  id="specLoadCellType"
+                  value="Strain Gauge Shear Beam (C3)"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Number of Load Cells</label>
+                <input type="number" id="specLoadCellCount" value="4" min="1" />
+              </div>
+
+              <div class="form-group">
+                <label>Load Receptor Geometry</label>
+                <select id="specReceptorGeometry">
+                  <option value="Rectangular" selected>
+                    Rectangular / Square
+                  </option>
+                  <option value="Circular">Circular</option>
+                  <option value="Triangular">Triangular</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Number of Support Points (N)</label>
+                <input type="number" id="specSupportPoints" value="4" min="1" />
+                <span class="field-hint">Used for Eccentricity formula</span>
+              </div>
+
+              <div class="form-group">
+                <label>Platform Dimensions</label>
+                <input
+                  type="text"
+                  id="specDimensions"
+                  placeholder="L × W × H (mm)"
+                  value="1200 × 1200 × 110 mm"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Power Supply</label>
+                <input
+                  type="text"
+                  id="specPower"
+                  value="230V AC ± 10%, 50 Hz + Internal Li-ion"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Display / Indication Type</label>
+                <select id="specDisplay">
+                  <option value="7-Segment LED (Green/Red)" selected>
+                    7-Segment LED
+                  </option>
+                  <option value="Backlit Graphic LCD">
+                    Backlit Graphic LCD
+                  </option>
+                  <option value="TFT Touch Display">TFT Touch Display</option>
+                  <option value="Mechanical Dial">Mechanical Dial</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Operating Mode</label>
+                <select id="specOperatingMode">
+                  <option value="Static Weighing" selected>
+                    Static Weighing
+                  </option>
+                  <option value="Checkweighing">Checkweighing</option>
+                  <option value="Parts Counting">Parts Counting</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Software / Firmware Version</label>
+                <input type="text" id="specFirmware" value="v2.4.1-OIML" />
+              </div>
+
+              <div class="form-group">
+                <label>Manufacturer's Declared Range</label>
+                <input
+                  type="text"
+                  id="specTempRange"
+                  value="-10 °C to +40 °C"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- 06. INITIAL ACCURACY & ERROR TESTING (NEW CARD) -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">06</div>
+              <div>
+                <h3>Initial Accuracy &amp; Error Testing</h3>
+                <p>
+                  Minimum 5 test points evaluating the Error Modulus (|Actual -
+                  Indicated|) against acceptable OIML limits
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-mic"
+                aria-label="Enable voice input for Accuracy Testing"
+                data-voice-section="accuracy"
+                aria-pressed="false"
+              >
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="accuracyTestTable">
+                <thead>
+                  <tr>
+                    <th>Test Point</th>
+                    <th>Actual Weight (Standard)</th>
+                    <th>Indicated Weight (Machine)</th>
+                    <th>Error Modulus (|Δ|)</th>
+                    <th>Remark</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1 (Min)</strong></td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-actual"
+                          oninput="calcError(this)"
+                          placeholder="e.g. 20"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-indicated"
+                          oninput="calcError(this)"
+                          placeholder="e.g. 20.0"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="input-readonly test-error"
+                        value="—"
+                        readonly
+                        style="width: 100px"
+                      />
+                    </td>
+                    <td>
+                      <span class="badge badge-pending remark-badge"
+                        >Pending</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>2 (1/4 Max)</strong></td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-actual"
+                          oninput="calcError(this)"
+                          placeholder="e.g. 750"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-indicated"
+                          oninput="calcError(this)"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="input-readonly test-error"
+                        value="—"
+                        readonly
+                        style="width: 100px"
+                      />
+                    </td>
+                    <td>
+                      <span class="badge badge-pending remark-badge"
+                        >Pending</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>3 (1/2 Max)</strong></td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-actual"
+                          oninput="calcError(this)"
+                          placeholder="e.g. 1500"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-indicated"
+                          oninput="calcError(this)"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="input-readonly test-error"
+                        value="—"
+                        readonly
+                        style="width: 100px"
+                      />
+                    </td>
+                    <td>
+                      <span class="badge badge-pending remark-badge"
+                        >Pending</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>4 (3/4 Max)</strong></td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-actual"
+                          oninput="calcError(this)"
+                          placeholder="e.g. 2250"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-indicated"
+                          oninput="calcError(this)"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="input-readonly test-error"
+                        value="—"
+                        readonly
+                        style="width: 100px"
+                      />
+                    </td>
+                    <td>
+                      <span class="badge badge-pending remark-badge"
+                        >Pending</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>5 (Max)</strong></td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-actual"
+                          oninput="calcError(this)"
+                          placeholder="e.g. 3000"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-unit">
+                        <input
+                          type="number"
+                          step="any"
+                          class="test-indicated"
+                          oninput="calcError(this)"
+                        />
+                        <select class="unit-select">
+                          <option>kg</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        class="input-readonly test-error"
+                        value="—"
+                        readonly
+                        style="width: 100px"
+                      />
+                    </td>
+                    <td>
+                      <span class="badge badge-pending remark-badge"
+                        >Pending</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- 07. SUPPORTING DOCUMENTS -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">07</div>
+              <div style="flex-grow: 1">
+                <h3>Supporting Documents</h3>
+                <p>
+                  Upload application files, manuals, schematics, and previous
+                  calibration certificates
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-action-outline"
+                onclick="triggerDocUpload()"
+              >
+                <i class="fa-solid fa-plus"></i> Add Document
+              </button>
+              <input
+                type="file"
+                id="docFileInput"
+                style="display: none"
+                multiple
+                onchange="handleDocFiles(this)"
+              />
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table" id="docTable">
+                <thead>
+                  <tr>
+                    <th>File Name</th>
+                    <th>Document Type</th>
+                    <th>Upload Date</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                    <th style="text-align: right">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="docTableBody">
+                  <tr>
+                    <td>
+                      <i class="fa-regular fa-file-pdf text-red"></i>
+                      <strong>AWS3000_Technical_Manual.pdf</strong>
+                    </td>
+                    <td>Instrument Manual</td>
+                    <td>29 Sep 2026</td>
+                    <td>4.2 MB</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Verified</span
+                      >
+                    </td>
+                    <td style="text-align: right">
+                      <button
+                        class="doc-icon-btn"
+                        title="Preview"
+                        onclick="viewDoc('AWS3000_Technical_Manual.pdf')"
+                      >
+                        <i class="fa-regular fa-eye"></i>
+                      </button>
+                      <button
+                        class="doc-icon-btn delete-btn"
+                        title="Delete"
+                        onclick="deleteDocRow(this)"
+                      >
+                        <i class="fa-regular fa-trash-can"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <i class="fa-regular fa-file-pdf text-red"></i>
+                      <strong>LoadCell_Cert_OIML_R60.pdf</strong>
+                    </td>
+                    <td>Calibration / Type Certificate</td>
+                    <td>29 Sep 2026</td>
+                    <td>1.8 MB</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Verified</span
+                      >
+                    </td>
+                    <td style="text-align: right">
+                      <button
+                        class="doc-icon-btn"
+                        title="Preview"
+                        onclick="viewDoc('LoadCell_Cert_OIML_R60.pdf')"
+                      >
+                        <i class="fa-regular fa-eye"></i>
+                      </button>
+                      <button
+                        class="doc-icon-btn delete-btn"
+                        title="Delete"
+                        onclick="deleteDocRow(this)"
+                      >
+                        <i class="fa-regular fa-trash-can"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <i class="fa-regular fa-file-image text-blue"></i>
+                      <strong>Schematic_Diagram_Rev3.png</strong>
+                    </td>
+                    <td>Technical Drawings</td>
+                    <td>29 Sep 2026</td>
+                    <td>850 KB</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Verified</span
+                      >
+                    </td>
+                    <td style="text-align: right">
+                      <button
+                        class="doc-icon-btn"
+                        title="Preview"
+                        onclick="viewDoc('Schematic_Diagram_Rev3.png')"
+                      >
+                        <i class="fa-regular fa-eye"></i>
+                      </button>
+                      <button
+                        class="doc-icon-btn delete-btn"
+                        title="Delete"
+                        onclick="deleteDocRow(this)"
+                      >
+                        <i class="fa-regular fa-trash-can"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- 08. TEST SCOPE & APPLICABLE REQUIREMENTS -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">08</div>
+              <div style="flex-grow: 1">
+                <h3>Test Scope &amp; Applicable Requirements</h3>
+                <p>
+                  Primary Standard:
+                  <strong>OIML R 76-1 (Edition 2006 / EN 45501)</strong>
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn-action-primary"
+                id="btnDetermineTests"
+              >
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Determine
+                Applicable Tests
+              </button>
+            </div>
+
+            <div class="scope-status-bar" id="scopeStatusBar">
+              <div class="scope-count">
+                <i class="fa-solid fa-circle-check text-green"></i>
+                <strong id="scopeCountText"
+                  >12 applicable tests identified</strong
+                >
+                based on Class III NAWI parameters
+              </div>
+              <div class="scope-legend">
+                <span
+                  ><span class="badge badge-required">✓ Required</span></span
+                >
+                <span
+                  ><span class="badge badge-applicable"
+                    >○ Applicable</span
+                  ></span
+                >
+                <span
+                  ><span class="badge badge-na">— Not Applicable</span></span
+                >
+              </div>
+            </div>
+
+            <div class="tests-checklist-grid" id="testsGrid">
+              <!-- Dynamic / Pre-populated Tests -->
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Weighing Performance Test</h4>
+                <p>
+                  Evaluation of errors at increasing and decreasing loads up to
+                  Max.
+                </p>
+                <span class="clause-pill">Clause A.4.4</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Repeatability Test</h4>
+                <p>
+                  Series of weighings at ~0.5 Max and Max under constant
+                  conditions.
+                </p>
+                <span class="clause-pill">Clause A.4.10</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Eccentricity (Corner Load) Test</h4>
+                <p>
+                  Application of load (1/3 Max + Tare) at standard quadrant
+                  positions.
+                </p>
+                <span class="clause-pill">Clause A.4.7</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Discrimination Test</h4>
+                <p>
+                  Verification that an extra 1.4d load produces a distinct
+                  indication change.
+                </p>
+                <span class="clause-pill">Clause A.4.8</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Zero-Setting &amp; Zero-Tracking</h4>
+                <p>
+                  Accuracy of zero setting (within ±0.25e) and effective
+                  tracking limits.
+                </p>
+                <span class="clause-pill">Clause A.4.1 / A.4.2</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Tare Balancing &amp; Tare Weighing</h4>
+                <p>
+                  Accuracy of the tare mechanism and net weight indication
+                  compliance.
+                </p>
+                <span class="clause-pill">Clause A.4.6</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Static Temperature Test</h4>
+                <p>
+                  Weighing performance at nominal, high (+40°C), and low (-10°C)
+                  temperatures.
+                </p>
+                <span class="clause-pill">Clause A.5.3</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Damp Heat, Steady State</h4>
+                <p>
+                  Exposure to 85% RH at +40°C for 48 hours and performance
+                  check.
+                </p>
+                <span class="clause-pill">Clause A.5.4</span>
+              </div>
+
+              <div class="test-item-card required-test">
+                <div class="test-item-status">
+                  <i class="fa-solid fa-check"></i> Required
+                </div>
+                <h4>Voltage Variations</h4>
+                <p>
+                  Testing at upper (110%) and lower (90%) rated supply voltage
+                  thresholds.
+                </p>
+                <span class="clause-pill">Clause A.5.2</span>
+              </div>
+
+              <div class="test-item-card applicable-test">
+                <div class="test-item-status">
+                  <i class="fa-regular fa-circle"></i> Applicable
+                </div>
+                <h4>Short Time Power Reductions</h4>
+                <p>
+                  Voltage dips and short interruptions simulation under mains
+                  power.
+                </p>
+                <span class="clause-pill">Clause B.3.1</span>
+              </div>
+
+              <div class="test-item-card applicable-test">
+                <div class="test-item-status">
+                  <i class="fa-regular fa-circle"></i> Applicable
+                </div>
+                <h4>Electrostatic Discharge (ESD)</h4>
+                <p>
+                  Application of 6 kV contact and 8 kV air discharges to
+                  enclosure.
+                </p>
+                <span class="clause-pill">Clause B.3.2</span>
+              </div>
+
+              <div class="test-item-card applicable-test">
+                <div class="test-item-status">
+                  <i class="fa-regular fa-circle"></i> Applicable
+                </div>
+                <h4>Electromagnetic Susceptibility (EMF)</h4>
+                <p>
+                  RF electromagnetic field exposure 26 MHz to 2 GHz at 10 V/m.
+                </p>
+                <span class="clause-pill">Clause B.3.3</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- 09. REFERENCE STANDARDS & EQUIPMENT -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">09</div>
+              <div>
+                <h3>Reference Standards &amp; Equipment</h3>
+                <p>
+                  Metrological traceability: verified weights and
+                  instrumentation
+                </p>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table" id="equipmentTable">
+                <thead>
+                  <tr>
+                    <th>Equipment / Standard Name</th>
+                    <th>Equipment ID</th>
+                    <th>Capacity / Range</th>
+                    <th>Accuracy / Class</th>
+                    <th>Calibration Cert No.</th>
+                    <th>Calibration Valid Until</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Standard Weights F1 Set</strong></td>
+                    <td><code>PWS-04</code></td>
+                    <td>1 mg – 20 kg</td>
+                    <td>OIML Class F1</td>
+                    <td>NPLI/CAL/2026/891</td>
+                    <td>15 Dec 2026</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Valid</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Heavy Cast Iron Weights M1</strong></td>
+                    <td><code>M1-CW-500</code></td>
+                    <td>500 kg – 3000 kg</td>
+                    <td>OIML Class M1</td>
+                    <td>RLML/CAL/2026/104</td>
+                    <td>04 Nov 2026</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Valid</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Digital Precision Thermometer</strong></td>
+                    <td><code>TH-021</code></td>
+                    <td>-20 °C to +70 °C</td>
+                    <td>±0.1 °C</td>
+                    <td>CAL-LAB-2026-44</td>
+                    <td>18 Jan 2027</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Valid</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Digital Precision Hygrometer</strong></td>
+                    <td><code>HG-008</code></td>
+                    <td>10% to 95% RH</td>
+                    <td>±2% RH</td>
+                    <td>CAL-LAB-2026-45</td>
+                    <td>18 Jan 2027</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Valid</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>AC Voltage Variac &amp; Analyzer</strong></td>
+                    <td><code>PWR-VAR-02</code></td>
+                    <td>0 – 300 V AC</td>
+                    <td>0.2% Reading</td>
+                    <td>ETDC/2026/902</td>
+                    <td>28 Oct 2026</td>
+                    <td>
+                      <span class="badge badge-pass"
+                        ><i class="fa-solid fa-check"></i> Valid</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="equipment-footer-alert">
+              <i class="fa-solid fa-circle-check text-green"></i>
+              All reference standard weights and climate monitors are within
+              active calibration windows.
+            </div>
+          </section>
+
+          <!-- 10. PRE-TEST VERIFICATION CHECKLIST -->
+          <section class="section-card">
+            <div class="section-header">
+              <div class="step-num">10</div>
+              <div>
+                <h3>Pre-Test Preparation Checklist</h3>
+                <p>
+                  Complete all mandatory prerequisite steps before initiating
+                  physical evaluation
+                </p>
+              </div>
+            </div>
+
+            <div class="checklist-grid">
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk1"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Instrument identification verified</strong> against
+                  submitted application</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk2"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Manufacturer and model designations verified</strong>
+                  on nameplate</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk3"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Technical specifications recorded</strong> (Max, Min,
+                  e, d, Accuracy Class)</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk4"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Required supporting documents</strong> uploaded and
+                  verified</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk5"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Traceable reference standards &amp; weights</strong>
+                  available in laboratory</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk_test1"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Eccentricity load positions mapped</strong> according
+                  to load receptor geometry</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk_test2"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Pre-load test completed</strong> to ensure mechanical
+                  settling of support points</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk_test3"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Zero-setting device range verified</strong> (within
+                  ±2% or ±4% of Max)</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk_test4"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Power supply stability check</strong> performed prior
+                  to accuracy tests</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk_test5"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Creep test prerequisites</strong> (stable environment
+                  and weights) confirmed</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk6"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Calibration certificates valid</strong> for all
+                  testing apparatus</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk7"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Laboratory ambient conditions recorded</strong>
+                  within acceptable reference limits</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk8"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Instrument leveled and warmed up</strong> as
+                  specified in manufacturer instructions</span
+                >
+              </label>
+
+              <label class="check-container">
+                <input
+                  type="checkbox"
+                  id="chk9"
+                  checked
+                  onchange="validateChecklist()"
+                />
+                <span class="checkmark"></span>
+                <span class="check-label"
+                  ><strong>Applicable OIML R-76 test scope determined</strong>
+                  and compiled</span
+                >
+              </label>
+            </div>
+          </section>
+
+          <!-- BOTTOM ACTIONS -->
+          <section class="bottom-action-bar">
+            <div class="bottom-bar-left">
+              <span class="text-muted"
+                ><i class="fa-solid fa-shield-halved"></i> Ready to transition
+                record state: <strong>Draft → In Progress</strong></span
+              >
+            </div>
+            <div class="bottom-bar-right">
+              <button
+                type="button"
+                class="btn-secondary"
+                id="bottomBtnSaveDraft"
+              >
+                <i class="fa-regular fa-floppy-disk"></i> Save as Draft
+              </button>
+              <button
+                type="button"
+                class="btn-primary"
+                id="bottomBtnStartEvaluation"
+              >
+                Start Evaluation <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+        </form>
+      </main>
+    </div>
+
+    <!-- CONFIRMATION MODAL DIALOG -->
+    <div class="modal-backdrop" id="confirmationModal">
+      <div class="modal-card">
+        <div class="modal-icon-badge">
+          <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+        <h3>Ready to begin evaluation?</h3>
+        <p class="modal-sub">
+          This test record will transition from <strong>Draft</strong> to
+          <strong>In Progress</strong> and open the automated calculation
+          observation tables.
+        </p>
+
+        <div class="modal-summary-box">
+          <div class="summary-row">
+            <span>Test ID:</span>
+            <strong id="modalTestId">NAWI-2026-015</strong>
+          </div>
+          <div class="summary-row">
+            <span>Instrument:</span>
+            <strong id="modalInstrument">AWS-3000 (Class III)</strong>
+          </div>
+          <div class="summary-row">
+            <span>Manufacturer:</span>
+            <strong id="modalManufacturer">Apex Weigh Systems Ltd</strong>
+          </div>
+          <div class="summary-row">
+            <span>Applicable Tests:</span>
+            <strong class="text-green" id="modalTestCount"
+              >12 Tests Identified</strong
+            >
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btnCancelModal">
+            Cancel
+          </button>
+          <button type="button" class="btn-primary" id="btnConfirmStart">
+            Start Evaluation <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Draft saved successfully!</div>
+
+    <!-- External Script -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/new-test.js"></script>
+
+    <!-- Floating Chatbot Button -->
+    <button
+      type="button"
+      class="floating-chatbot-btn"
+      aria-label="Open Chatbot Assistant"
+      aria-expanded="false"
+      aria-controls="chatbotPanel"
+    >
+      <i class="fa-regular fa-comments" aria-hidden="true"></i>
+      <span>Chat with AI</span>
+    </button>
+    <script src="../js/chat-widget.js"></script>
+
+    <!-- In-file Javascript to calculate Error Modulus & Pass/Fail dynamically -->
+    <script>
+      function calcError(input) {
+        const row = input.closest("tr");
+        const actualInput = row.querySelector(".test-actual");
+        const indicatedInput = row.querySelector(".test-indicated");
+        const errorOutput = row.querySelector(".test-error");
+        const badge = row.querySelector(".remark-badge");
+
+        const actual = parseFloat(actualInput.value);
+        const indicated = parseFloat(indicatedInput.value);
+
+        if (!isNaN(actual) && !isNaN(indicated)) {
+          // Calculate Error Modulus (Absolute Difference)
+          const error = Math.abs(actual - indicated);
+          errorOutput.value = error.toFixed(3);
+
+          // Grab scale interval (e) from Technical Specifications (Fallback to 1 if empty)
+          const specEInput = document.getElementById("specE");
+          const eVal =
+            specEInput && !isNaN(parseFloat(specEInput.value))
+              ? parseFloat(specEInput.value)
+              : 1;
+
+          // Check acceptability: for simplicity, we mock OIML limits checking if Error <= 1e
+          if (error <= eVal) {
+            badge.className = "badge badge-pass remark-badge";
+            badge.innerHTML = '<i class="fa-solid fa-check"></i> Pass';
+          } else {
+            badge.className = "badge badge-fail remark-badge";
+            badge.innerHTML = '<i class="fa-solid fa-xmark"></i> Fail';
+          }
+        } else {
+          errorOutput.value = "—";
+          badge.className = "badge badge-pending remark-badge";
+          badge.innerHTML = "Pending";
+        }
+      }
+    </script>
+    <script src="../js/voice-entry.js" defer></script>
+  </body>
+</html>

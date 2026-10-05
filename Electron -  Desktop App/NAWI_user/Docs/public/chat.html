@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Assistant — NAWI System</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../public/chat.css" />
+</head>
+<body>
+
+  <!-- MASTER FIXED LEFT SIDEBAR -->
+  <aside class="sidebar no-print">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>NAWI System</h2>
+        <span>OIML R-76 Evaluation</span>
+      </div>
+    </div>
+    
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Overview</span>
+      </a>
+      <a href="new-test.html" class="nav-item">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>New Test</span>
+      </a>
+      <a href="my-tests.html" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <span>My Tests</span>
+      </a>
+      <a href="test-evaluation.html" class="nav-item">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Test Evaluation</span>
+      </a>
+      <a href="reports.html" class="nav-item">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="repository.html" class="nav-item">
+        <i class="fa-solid fa-database"></i>
+        <span>Report Repository</span>
+      </a>
+      
+      <div class="nav-divider"></div>
+      
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+      
+      <a href="profile.html" class="nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile & Account</span>
+      </a>
+      <a href="../../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles">
+        <div class="title-with-badge">
+          <h1>AI Assistant</h1>
+          <span class="badge badge-ai"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Powered</span>
+        </div>
+        <p>OIML R-76 Regulatory & Test Evaluation Assistant</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-secondary" id="btnClearChat">
+          <i class="fa-solid fa-eraser"></i> Clear Chat
+        </button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <div class="chat-container modern-card">
+        
+        <!-- Chat History Area -->
+        <div class="chat-messages" id="chatMessages">
+          
+          <!-- Bot Welcome Message -->
+          <div class="chat-message bot">
+            <div class="message-avatar bot-avatar">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="message-content-wrapper">
+              <div class="message-bubble">
+                <p>Hello Dr. Sharma! I am your NAWI System AI Assistant.</p>
+                <p>I can help you interpret OIML R-76 regulations, calculate Maximum Permissible Errors (MPE), review test procedures, or analyze evaluation results. How can I assist you today?</p>
+              </div>
+              <span class="message-time">System • 09:00 AM</span>
+            </div>
+          </div>
+
+          <!-- Quick Suggestion Chips (Disappear after first message) -->
+          <div class="quick-suggestions" id="quickSuggestions">
+            <button class="suggestion-chip">Calculate MPE for Class III, Max 300kg, e=100g</button>
+            <button class="suggestion-chip">What are the environmental limits for R-76?</button>
+            <button class="suggestion-chip">How do I perform the Discrimination Test?</button>
+            <button class="suggestion-chip">Summarize test NAWI-2026-014</button>
+          </div>
+
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input-wrapper">
+          <div class="chat-input-container">
+            <button class="btn-attach" title="Attach file or test report">
+              <i class="fa-solid fa-paperclip"></i>
+            </button>
+            <textarea id="chatInput" rows="1" placeholder="Ask about OIML R-76, calculations, or test procedures..." autofocus></textarea>
+            <button class="btn-send" id="btnSend" title="Send message">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+          <div class="input-footer">
+            <i class="fa-solid fa-circle-info"></i> AI can make mistakes. Please verify critical regulatory calculations.
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../public/chat.js"></script>
+</body>
+</html>

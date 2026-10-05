@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratory & Organization Management - Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/admin-style.css" />
+</head>
+<body>
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="brand-text"><h2>Administrator</h2><span>OIML R-76 Platform</span></div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-group-title">Overview</div>
+      <a href="../index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+      <div class="nav-group-title">User & Access</div>
+      <a href="./user-management.html" class="nav-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+      <a href="./roles-permissions.html" class="nav-item"><i class="fa-solid fa-user-shield"></i><span>Roles & Permissions</span></a>
+      <a href="./lab-management.html" class="nav-item active"><i class="fa-solid fa-building-flag"></i><span>Lab Management</span></a>
+      <div class="nav-group-title">OIML Configuration</div>
+      <a href="./rule-packages.html" class="nav-item"><i class="fa-solid fa-file-code"></i><span>Rule Packages</span></a>
+      <a href="./test-config.html" class="nav-item"><i class="fa-solid fa-sliders"></i><span>Test Configuration</span></a>
+      <div class="nav-group-title">Platform Governance</div>
+      <a href="./reports-repo.html" class="nav-item"><i class="fa-solid fa-file-contract"></i><span>Reports Repository</span></a>
+      <a href="./documents.html" class="nav-item"><i class="fa-regular fa-folder-open"></i><span>Evidence Documents</span></a>
+      <div class="nav-group-title">Intelligence</div>
+      <a href="./ai-services.html" class="nav-item"><i class="fa-solid fa-microchip"></i><span>AI Services</span></a>
+      <a href="./knowledge-base.html" class="nav-item"><i class="fa-solid fa-book-atlas"></i><span>Knowledge Base</span></a>
+      <a href="./localization.html" class="nav-item"><i class="fa-solid fa-language"></i><span>Localization</span></a>
+      <div class="nav-group-title">Security & System</div>
+      <a href="./system-monitoring.html" class="nav-item"><i class="fa-solid fa-server"></i><span>System Monitoring</span></a>
+      <a href="./offline-sync.html" class="nav-item"><i class="fa-solid fa-rotate"></i><span>Offline Sync</span></a>
+      <a href="./security.html" class="nav-item"><i class="fa-solid fa-lock"></i><span>Security Settings</span></a>
+      <a href="./audit-trail.html" class="nav-item"><i class="fa-solid fa-list-check"></i><span>Audit Trail</span></a>
+      <a href="./notifications.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i><span>Notifications</span></a>
+      <a href="./backup-settings.html" class="nav-item"><i class="fa-solid fa-hard-drive"></i><span>Backup & Recovery</span></a>
+      
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">S</div>
+        <div class="user-meta">
+          <strong>System Admin</strong>
+          <span>Superuser</span>
+        </div>
+      </div>
+      
+     <a href="../../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    
+    </nav>  
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>Laboratory Management</h1>
+        <p>Manage authorized laboratories and organizational entities.</p>
+      </div>
+      <div class="header-actions">
+        <button class="notification-btn"><i class="fa-regular fa-bell"></i><span class="notification-badge"></span></button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <div class="kpi-grid">
+        <article class="kpi-card">
+          <div class="kpi-header"><span class="kpi-icon icon-blue"><i class="fa-solid fa-building"></i></span><span class="kpi-label">Total Labs</span></div>
+          <div class="kpi-value">12</div>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-header"><span class="kpi-icon icon-green"><i class="fa-solid fa-check"></i></span><span class="kpi-label">Active Labs</span></div>
+          <div class="kpi-value">10</div>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-header"><span class="kpi-icon icon-cyan"><i class="fa-solid fa-flask"></i></span><span class="kpi-label">Current Evaluations</span></div>
+          <div class="kpi-value">18</div>
+        </article>
+      </div>
+
+      <div class="card">
+        <div class="page-header mb-4">
+          <div class="search-filter-bar" style="margin: 0; width: 100%;">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="form-control" placeholder="Search by name, location, ID...">
+            </div>
+            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Laboratory</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Lab ID</th>
+                <th>Laboratory Name</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Personnel</th>
+                <th>Active Tests</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">LAB-DEL-01</td>
+                <td>Central Metrology Lab</td>
+                <td>New Delhi</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>8</td>
+                <td>4</td>
+                <td><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+              </tr>
+              <tr>
+                <td class="font-medium">LAB-MUM-02</td>
+                <td>TechLabs Weights & Measures</td>
+                <td>Mumbai, MH</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>12</td>
+                <td>9</td>
+                <td><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+              </tr>
+              <tr>
+                <td class="font-medium">LAB-GUJ-01</td>
+                <td>Gujarat State Metrology</td>
+                <td>Ahmedabad, GJ</td>
+                <td><span class="badge badge-inactive">Inactive</span></td>
+                <td>3</td>
+                <td>0</td>
+                <td><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/admin-script.js"></script>
+</body>
+</html>

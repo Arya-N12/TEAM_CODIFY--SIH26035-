@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Evaluation — NAWI OIML R-76</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/test-evaluation.css" />
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+ <!-- FIXED LEFT SIDEBAR (WIDER WITH LARGER TYPOGRAPHY) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>NAWI Test Management</h2>
+        <span>OIML R-76 Compliance System</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item ">
+        <i class="fa-solid fa-house"></i>
+        <span>Overview</span>
+      </a>
+      <a href="../pages/new-test.html" class="nav-item">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>New Test</span>
+      </a>
+      <a href="../pages/my-tests.html" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <span>My Tests</span>
+      </a>
+      <a href="../pages/test-evaluation.html" class="nav-item active">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Test Evaluation</span>
+      </a>
+      <a href="../pages/Report.html" class="nav-item">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="../pages/instrment-repo.html" class="nav-item">
+        <i class="fa-solid fa-database"></i>
+        <span>Instrument Repository</span>
+      </a>
+
+      <!-- Personal Info Placed Directly After Report Repository -->
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+      
+      <a href="../pages/personal-info.html" class="nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile &amp; Account</span>
+      </a>
+      <a href="../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles">
+        <div class="title-with-badge">
+          <h1>Test Evaluation</h1>
+          <span class="badge badge-in-progress">In Progress</span>
+          <span class="badge-id-pill">ID: NAWI-2026-014</span>
+        </div>
+        <p>OIML R-76 compliance testing and automated evaluation</p>
+        
+        <!-- High-level Progress Track -->
+        <!-- <div class="header-progress-track mt-2">
+          <span class="track-step done"><i class="fa-solid fa-check"></i> Test Preparation</span>
+          <i class="fa-solid fa-arrow-right track-arrow"></i>
+          <span class="track-step active"><i class="fa-solid fa-circle"></i> Evaluation</span>
+          <i class="fa-solid fa-arrow-right track-arrow"></i>
+          <span class="track-step pending"><i class="fa-regular fa-circle"></i> Compliance</span>
+          <i class="fa-solid fa-arrow-right track-arrow"></i>
+          <span class="track-step pending"><i class="fa-regular fa-circle"></i> Report</span>
+        </div> -->
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-secondary"><i class="fa-regular fa-floppy-disk"></i> Save Progress</button>
+        <button type="button" class="btn-primary" id="topSubmitBtn">Submit Evaluation <i class="fa-solid fa-check"></i></button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      
+      <div class="eval-layout">
+        
+        <!-- LEFT PANEL: Info & Evaluation Progress Navigation -->
+        <div class="eval-sidebar">
+          <!-- Sticky wrapper keeps both cards visible when scrolling -->
+          <div class="sidebar-sticky-wrap">
+            
+            <!-- Compact Instrument Summary -->
+            <div class="modern-card info-card">
+              <div class="card-header-sm">
+                <h3><i class="fa-solid fa-scale-balanced"></i> Instrument Summary</h3>
+              </div>
+              <div class="info-grid">
+                <div class="info-item"><span>Test ID</span><strong>NAWI-2026-014</strong></div>
+                <div class="info-item"><span>Model</span><strong>AWS-3000</strong></div>
+                <div class="info-item"><span>Class</span><strong>III (Medium)</strong></div>
+                <div class="info-item"><span>Max / Min</span><strong>300 kg / 20 g</strong></div>
+                <div class="info-item"><span>e / d</span><strong>100 g / 100 g</strong></div>
+              </div>
+              <button class="btn-link mt-3">View Full Details <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Stepper Menu -->
+            <div class="modern-card nav-card">
+              <div class="card-header-sm">
+                <h3>Evaluation Checklist</h3>
+              </div>
+              <ul class="stepper-menu" id="stepperMenu">
+                <li class="step-item completed" data-step="1">
+                  <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                  <div class="step-content">
+                    <span class="step-title">01. Preliminary Checks</span>
+                  </div>
+                </li>
+                <li class="step-item completed" data-step="2">
+                  <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                  <div class="step-content">
+                    <span class="step-title">02. Metrological Tests</span>
+                  </div>
+                </li>
+                <li class="step-item active" data-step="3">
+                  <div class="step-icon"><i class="fa-solid fa-circle"></i></div>
+                  <div class="step-content">
+                    <span class="step-title">03. Performance Tests</span>
+                  </div>
+                </li>
+                <li class="step-item pending" data-step="4">
+                  <div class="step-icon"><i class="fa-regular fa-circle"></i></div>
+                  <div class="step-content">
+                    <span class="step-title">04. Special Tests</span>
+                  </div>
+                </li>
+                <li class="step-item summary-step pending" data-step="5">
+                  <div class="step-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+                  <div class="step-content">
+                    <span class="step-title">05. Final Compliance</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL: Current Test Workspace -->
+        <div class="eval-main" id="evalMainContainer">
+          
+          <!-- STEP 3: Repeatability Test (Active Workspace) -->
+          <div class="test-section fade-in" id="step-3">
+            <div class="section-heading flex-between">
+              <div>
+                <h2>03 — Repeatability Test</h2>
+                <p class="text-muted mt-1">Record repeated weighing observations and evaluate the applicable repeatability requirement.</p>
+              </div>
+              <span class="badge badge-in-progress">In Progress</span>
+            </div>
+
+            <!-- Test Configuration -->
+            <div class="modern-card p-4 mb-4">
+              <h4 class="section-subtitle"><i class="fa-solid fa-sliders"></i> Test Setup</h4>
+              <div class="config-grid">
+                <div class="form-group">
+                  <label>Test Load</label>
+                  <div class="input-with-unit">
+                    <input type="number" value="50.000" readonly>
+                    <span>kg</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Number of Trials</label>
+                  <input type="number" value="5" readonly class="form-input">
+                </div>
+                <div class="form-group">
+                  <label>Reference Standard</label>
+                  <input type="text" value="Std Weight Set PWS-04" readonly class="form-input">
+                </div>
+                <div class="form-group">
+                  <label>&nbsp;</label>
+                  <button class="btn-secondary w-100"><i class="fa-solid fa-check-double"></i> Apply Config</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Observation Data Table -->
+            <div class="modern-card p-4 mb-4">
+              <div class="table-toolbar mb-3">
+                <h4 class="section-subtitle m-0"><i class="fa-solid fa-table-list"></i> Observation Data</h4>
+                <div class="toolbar-actions">
+                  <button class="btn-action-subtle"><i class="fa-solid fa-plus"></i> Add Observation</button>
+                  <button class="btn-action-subtle"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                  <button class="btn-action-subtle text-red"><i class="fa-solid fa-eraser"></i> Clear</button>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table class="modern-table" id="obs-table">
+                  <thead>
+                    <tr>
+                      <th>Trial</th>
+                      <th>Reference Value</th>
+                      <th>Indicated Value</th>
+                      <th>Error</th>
+                      <th>Permissible Error</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td class="text-subtle font-mono">50.000 kg</td>
+                      <td>
+                        <div class="input-with-unit">
+                          <input type="number" class="table-input calc-trigger" value="50.000" data-ref="50" data-mpe="0.05">
+                          <span>kg</span>
+                        </div>
+                      </td>
+                      <td class="calc-error font-mono font-medium">0.000 kg</td>
+                      <td class="text-subtle">Calculated</td>
+                      <td class="calc-result"><span class="badge badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td class="text-subtle font-mono">50.000 kg</td>
+                      <td>
+                        <div class="input-with-unit">
+                          <input type="number" class="table-input calc-trigger" value="50.100" data-ref="50" data-mpe="0.05">
+                          <span>kg</span>
+                        </div>
+                      </td>
+                      <td class="calc-error font-mono font-medium text-red">+0.100 kg</td>
+                      <td class="text-subtle">Calculated</td>
+                      <td class="calc-result"><span class="badge badge-fail">FAIL</span></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td class="text-subtle font-mono">50.000 kg</td>
+                      <td>
+                        <div class="input-with-unit">
+                          <input type="number" class="table-input calc-trigger" data-ref="50" data-mpe="0.05">
+                          <span>kg</span>
+                        </div>
+                      </td>
+                      <td class="calc-error font-mono text-muted">—</td>
+                      <td class="text-subtle">Calculated</td>
+                      <td class="calc-result"><span class="text-muted">—</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Intelligent Data Grid (Auto Calc & Validation) -->
+            <div class="intelligent-grid mb-4">
+              <!-- Automated Evaluation Widget -->
+              <div class="automated-calc-card">
+                <div class="widget-header">
+                  <span><i class="fa-solid fa-wand-magic-sparkles"></i> Automated Evaluation</span>
+                  <button class="btn-link">View Details</button>
+                </div>
+                
+                <div class="calc-metrics" id="live-calc-display">
+                  <div class="metric-row">
+                    <span class="metric-label">Reference Value</span>
+                    <span class="metric-val font-mono" id="disp-ref">50.000 kg</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="metric-label">Indicated Value</span>
+                    <span class="metric-val font-mono" id="disp-ind">50.100 kg</span>
+                  </div>
+                  <hr class="metric-divider">
+                  <div class="metric-row highlight">
+                    <span class="metric-label">Calculated Error</span>
+                    <span class="metric-val font-mono text-red" id="disp-err">+0.100 kg</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="metric-label">Applicable Requirement</span>
+                    <span class="metric-val">Auto-determined</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="metric-label">Permissible Error</span>
+                    <span class="metric-val font-mono" id="disp-mpe">± 0.050 kg</span>
+                  </div>
+                  
+                  <div class="final-result fail mt-3" id="disp-res">
+                    <i class="fa-solid fa-circle-xmark"></i> FAIL
+                  </div>
+                </div>
+              </div>
+
+              <!-- Validation Engine -->
+              <div class="validation-engine-card">
+                <div class="widget-header">
+                  <span><i class="fa-solid fa-shield-halved"></i> Data Validation</span>
+                </div>
+                
+                <div class="validation-state error" id="val-state">
+                  <i class="fa-solid fa-triangle-exclamation status-icon"></i>
+                  <div class="val-message">
+                    <strong>2 issues require attention</strong>
+                    <p>Resolve data integrity issues to proceed.</p>
+                  </div>
+                </div>
+                
+                <ul class="validation-issues-list mt-3">
+                  <li><i class="fa-solid fa-circle-dot text-red"></i> Missing indicated value in Trial 3</li>
+                  <li><i class="fa-solid fa-circle-dot text-red"></i> Value in Trial 2 exceeds permissible error</li>
+                </ul>
+                <button class="btn-secondary w-100 mt-3"><i class="fa-solid fa-magnifying-glass"></i> View Issues</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- STEP 5: Final Compliance Summary (Hidden by default) -->
+          <div class="test-section fade-in" id="step-5" style="display: none;">
+            <div class="section-heading">
+              <h2>Compliance Summary</h2>
+              <p class="text-muted mt-1">Final review of all applicable OIML R-76 test outcomes.</p>
+            </div>
+
+            <div class="modern-card p-4 mb-4">
+              <table class="modern-table w-100">
+                <thead>
+                  <tr>
+                    <th>Evaluation</th>
+                    <th>Result</th>
+                    <th>Evidence</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Preliminary Examination</td>
+                    <td><span class="badge badge-pass">PASS</span></td>
+                    <td class="text-muted">2 files</td>
+                    <td><span class="text-green font-medium"><i class="fa-solid fa-check"></i> Complete</span></td>
+                  </tr>
+                  <tr>
+                    <td>Weighing Performance</td>
+                    <td><span class="badge badge-pass">PASS</span></td>
+                    <td class="text-muted">4 files</td>
+                    <td><span class="text-green font-medium"><i class="fa-solid fa-check"></i> Complete</span></td>
+                  </tr>
+                  <tr>
+                    <td>Repeatability</td>
+                    <td><span class="badge badge-fail">FAIL</span></td>
+                    <td class="text-muted">3 files</td>
+                    <td><span class="text-green font-medium"><i class="fa-solid fa-check"></i> Complete</span></td>
+                  </tr>
+                  <tr>
+                    <td>Eccentric Loading</td>
+                    <td><span class="badge badge-pass">PASS</span></td>
+                    <td class="text-muted">2 files</td>
+                    <td><span class="text-green font-medium"><i class="fa-solid fa-check"></i> Complete</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="readiness-panel mb-4">
+              <div class="readiness-verdict">
+                <div class="verdict-box fail">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                  <span>FAIL</span>
+                </div>
+                <p class="mt-3 text-center text-muted">Overall Result</p>
+                <button class="btn-link mt-2">View Failed Test <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+              <div class="readiness-checklist-box">
+                <h4 class="section-subtitle">Evaluation Readiness</h4>
+                <ul class="clean-list">
+                  <li class="check-pass"><i class="fa-solid fa-check"></i> All applicable tests completed</li>
+                  <li class="check-pass"><i class="fa-solid fa-check"></i> Required observations recorded</li>
+                  <li class="check-pass"><i class="fa-solid fa-check"></i> Calculations completed</li>
+                  <li class="check-pass"><i class="fa-solid fa-check"></i> Input validation passed</li>
+                  <li class="check-pass"><i class="fa-solid fa-check"></i> Reference equipment verified</li>
+                  <li class="check-pass"><i class="fa-solid fa-check"></i> Compliance result determined</li>
+                </ul>
+                <div class="alert alert-warning mt-3">
+                  <i class="fa-solid fa-circle-info"></i> Evaluation ready for submission. Result is marked as FAIL due to Repeatability standard non-compliance.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/test-evaluation.js"></script>
+
+  <!-- Floating Chatbot Button -->
+  <button type="button" class="floating-chatbot-btn" aria-label="Open Chatbot Assistant" aria-expanded="false" aria-controls="chatbotPanel">
+    <i class="fa-regular fa-comments" aria-hidden="true"></i>
+    <span>Chat with AI</span>
+  </button>
+  <script src="../js/chat-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Report RPT-2026-0078 — NAWI OIML R-76</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- html2pdf.js for client-side PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- html-docx-js for client-side DOCX generation -->
+  <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+  <link rel="stylesheet" href="../css/Report.css" />
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR (WIDER WITH LARGER TYPOGRAPHY) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>NAWI Test Management</h2>
+        <span>OIML R-76 Compliance System</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item ">
+        <i class="fa-solid fa-house"></i>
+        <span>Overview</span>
+      </a>
+      <a href="../pages/new-test.html" class="nav-item">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>New Test</span>
+      </a>
+      <a href="../pages/my-tests.html" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <span>My Tests</span>
+      </a>
+      <a href="../pages/test-evaluation.html" class="nav-item">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Test Evaluation</span>
+      </a>
+      <a href="../pages/Report.html" class="nav-item active">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="../pages/instrment-repo.html" class="nav-item">
+        <i class="fa-solid fa-database"></i>
+        <span>Instrument Repository</span>
+      </a>
+
+      <!-- Personal Info Placed Directly After Report Repository -->
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+      
+      <a href="../pages/personal-info.html" class="nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile &amp; Account</span>
+      </a>
+     <a href="../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header no-print">
+      <div class="header-titles">
+        <div class="title-with-badge">
+          <h1>Report <span class="text-blue">RPT-2026-0078</span></h1>
+          <span class="badge badge-pass">Finalized</span>
+        </div>
+        <p>Non-Automatic Weighing Instrument (NAWI) Evaluation</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-secondary"><i class="fa-solid fa-share-nodes"></i> Share</button>
+        <!-- NEW DOCX BUTTON -->
+        <button type="button" class="btn-primary docx-btn" id="btnDownloadDocx">
+          <i class="fa-solid fa-file-word"></i> Download DOCX
+        </button>
+        <!-- EXISTING PDF BUTTON (Added a class for specific hover color) -->
+        <button type="button" class="btn-primary pdf-btn" id="btnDownloadPdf">
+          <i class="fa-solid fa-file-pdf"></i> Download PDF
+        </button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      
+      <!-- REPORT DOCUMENT CONTAINER -->
+      <div class="report-document" id="printableReport">
+        
+        <!-- 1. Report Cover / Header -->
+        <div class="doc-header">
+          <div class="doc-brand">
+            <i class="fa-solid fa-scale-balanced doc-logo"></i>
+            <div>
+              <h1 class="doc-title">LEGAL METROLOGY TEST REPORT</h1>
+              <h2 class="doc-subtitle">Non-Automatic Weighing Instrument (NAWI)</h2>
+              <p class="doc-meta">Evaluation in accordance with applicable OIML R-76 requirements</p>
+            </div>
+          </div>
+          <div class="doc-qr">
+            <!-- Dynamic QR Code pointing to report verification -->
+            <img src="../img/qr.png" alt="Verification QR Code" class="qr-code-img">
+            <span>Verify Report</span>
+          </div>
+        </div>
+
+        <div class="report-section">
+          <h3 class="section-title">1. Report Information</h3>
+          <div class="info-grid grid-cols-2">
+            <div class="info-cell"><span>Report ID</span><strong>RPT-2026-0078</strong></div>
+            <div class="info-cell"><span>Test ID</span><strong>NAWI-2026-0247</strong></div>
+            <div class="info-cell"><span>Test Type</span><strong>Model Approval</strong></div>
+            <div class="info-cell"><span>Report Status</span><strong>Finalized</strong></div>
+            <div class="info-cell"><span>Test Date</span><strong>28 Sep 2026</strong></div>
+            <div class="info-cell"><span>Report Date</span><strong>29 Sep 2026</strong></div>
+            <div class="info-cell"><span>Laboratory</span><strong>Regional Legal Metrology Laboratory</strong></div>
+            <div class="info-cell"><span>Test Officer</span><strong>Dr. Ananya Sharma</strong></div>
+          </div>
+        </div>
+
+        <!-- 2. Applicant & Manufacturer -->
+        <div class="report-section page-break-after">
+          <h3 class="section-title">2. Applicant &amp; Manufacturer Information</h3>
+          <div class="grid-2-layout">
+            <div class="info-box">
+              <h4 class="box-title">Applicant Details</h4>
+              <table class="minimal-table">
+                <tr><td>Name</td><td><strong>ABC Instruments Pvt. Ltd.</strong></td></tr>
+                <tr><td>Address</td><td><strong>Plot 44, Industrial Area</strong></td></tr>
+                <tr><td>Country</td><td><strong>India</strong></td></tr>
+                <tr><td>Contact</td><td><strong>Rajesh Mehta</strong></td></tr>
+                <tr><td>App. Ref No.</td><td><strong>APP-2026-0142</strong></td></tr>
+              </table>
+            </div>
+            <div class="info-box">
+              <h4 class="box-title">Manufacturer Details</h4>
+              <table class="minimal-table">
+                <tr><td>Manufacturer</td><td><strong>ABC Instruments Pvt. Ltd.</strong></td></tr>
+                <tr><td>Address</td><td><strong>Plot 44, Industrial Area</strong></td></tr>
+                <tr><td>Country</td><td><strong>India</strong></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 & 4. Instrument Identification & Specifications -->
+        <div class="report-section">
+          <h3 class="section-title">3. Instrument Identification &amp; Specifications</h3>
+          
+          <div class="grid-2-layout align-start">
+            <div>
+              <table class="bordered-table w-100">
+                <thead><tr><th colspan="2">Instrument Parameters</th></tr></thead>
+                <tbody>
+                  <tr><td>Type</td><td><strong>Electronic Platform Scale</strong></td></tr>
+                  <tr><td>Manufacturer</td><td><strong>ABC Instruments</strong></td></tr>
+                  <tr><td>Model / Type</td><td><strong>AXS-500</strong></td></tr>
+                  <tr><td>Serial Number</td><td><strong>AXS500-02471</strong></td></tr>
+                  <tr><td>Sample ID</td><td><strong>SMP-2026-047</strong></td></tr>
+                  <tr><td>Accuracy Class</td><td><strong>III (Medium)</strong></td></tr>
+                  <tr><td>Max Capacity</td><td><strong>300 kg</strong></td></tr>
+                  <tr><td>Min Capacity</td><td><strong>20 g</strong></td></tr>
+                  <tr><td>Scale Interval (e / d)</td><td><strong>100 g / 100 g</strong></td></tr>
+                  <tr><td>Verification Intervals (n)</td><td><strong>3000</strong></td></tr>
+                  <tr><td>Load Cells</td><td><strong>4 × Shear Beam</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="evidence-preview-box">
+              <div class="evidence-img-wrap">
+                <div class="img-placeholder"><i class="fa-solid fa-camera"></i></div>
+              </div>
+              <div class="evidence-caption">
+                <strong>Nameplate Photograph</strong>
+                <span>Ref: IMG_001_AXS500.jpg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 & 6. Standards, Env & Equipment -->
+        <div class="report-section">
+          <h3 class="section-title">4. Standards, Conditions &amp; Traceability</h3>
+          
+          <div class="info-box mb-4">
+            <h4 class="box-title">Applicable Standard</h4>
+            <p><strong>OIML Recommendation R 76-1</strong> — Non-Automatic Weighing Instruments (Metrological and Technical Requirements).</p>
+          </div>
+
+          <div class="grid-2-layout mb-4">
+            <div class="info-box">
+              <h4 class="box-title">Laboratory &amp; Environment</h4>
+              <table class="minimal-table">
+                <tr><td>Location</td><td><strong>Pune, Maharashtra</strong></td></tr>
+                <tr><td>Test Date</td><td><strong>28 Sep 2026 (10:15 – 16:40)</strong></td></tr>
+                <tr><td>Temperature</td><td><strong>23.5 °C</strong></td></tr>
+                <tr><td>Humidity</td><td><strong>52 % RH</strong></td></tr>
+                <tr><td>Atmosphere</td><td><strong>Stable</strong></td></tr>
+              </table>
+            </div>
+          </div>
+
+          <h4 class="box-title mb-2">Reference Standards &amp; Test Equipment</h4>
+          <table class="bordered-table w-100 mb-2">
+            <thead>
+              <tr>
+                <th>Equipment</th>
+                <th>ID Number</th>
+                <th>Accuracy/Class</th>
+                <th>Calibration Cert.</th>
+                <th>Valid Until</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Standard Weights Set</td>
+                <td class="font-mono">SW-042</td>
+                <td>Class F1</td>
+                <td>CAL-2026-102</td>
+                <td><span class="text-green font-medium">12/2026</span></td>
+              </tr>
+              <tr>
+                <td>Digital Thermometer</td>
+                <td class="font-mono">TEMP-018</td>
+                <td>±0.1°C</td>
+                <td>CAL-2026-087</td>
+                <td><span class="text-green font-medium">11/2026</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 8 & 9. Pre-Test & Applicability -->
+        <div class="report-section page-break-after">
+          <h3 class="section-title">5. Test Applicability &amp; Preparation</h3>
+          
+          <div class="grid-2-layout">
+            <div>
+              <h4 class="box-title">Pre-Test Verification</h4>
+              <ul class="checklist-display">
+                <li><i class="fa-solid fa-check-circle text-green"></i> Instrument identification verified</li>
+                <li><i class="fa-solid fa-check-circle text-green"></i> Technical specifications recorded</li>
+                <li><i class="fa-solid fa-check-circle text-green"></i> Supporting documents available</li>
+                <li><i class="fa-solid fa-check-circle text-green"></i> Environmental conditions acceptable</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="box-title">Applicable OIML R-76 Tests</h4>
+              <table class="minimal-table">
+                <tr><td>Preliminary Examination</td><td><span class="badge badge-pass">Applicable</span></td></tr>
+                <tr><td>Zero / Zero-Setting</td><td><span class="badge badge-pass">Applicable</span></td></tr>
+                <tr><td>Weighing Performance</td><td><span class="badge badge-pass">Applicable</span></td></tr>
+                <tr><td>Repeatability</td><td><span class="badge badge-pass">Applicable</span></td></tr>
+                <tr><td>Eccentric Loading</td><td><span class="badge badge-pass">Applicable</span></td></tr>
+                <tr><td>Tare Evaluation</td><td><span class="text-muted">Not Applicable</span></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Detailed Test Results -->
+        <div class="report-section">
+          <h3 class="section-title">6. Detailed Test Observations &amp; Results</h3>
+
+          <!-- Test 1 -->
+          <div class="test-result-block">
+            <h4 class="test-title">6.1 Accuracy / Weighing Performance</h4>
+            <div class="test-config mb-3">
+              <span>Test Load: <strong>100 kg</strong></span> |
+              <span>Reference Standard: <strong>SW-042</strong></span> |
+              <span>Unit: <strong>kg</strong></span>
+            </div>
+            
+            <table class="bordered-table w-100 mb-3">
+              <thead>
+                <tr>
+                  <th>Trial</th>
+                  <th>Reference Load</th>
+                  <th>Indicated Value</th>
+                  <th>Calculated Error</th>
+                  <th>Permissible Error</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="font-mono">100.000</td>
+                  <td class="font-mono">100.000</td>
+                  <td class="font-mono">0.000</td>
+                  <td>±0.050</td>
+                  <td><span class="text-green font-medium">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="font-mono">100.000</td>
+                  <td class="font-mono">100.000</td>
+                  <td class="font-mono">0.000</td>
+                  <td>±0.050</td>
+                  <td><span class="text-green font-medium">PASS</span></td>
+                </tr>
+                <!-- Simulated Failure -->
+                <tr class="row-fail-bg">
+                  <td>3</td>
+                  <td class="font-mono">100.000</td>
+                  <td class="font-mono">100.100</td>
+                  <td class="font-mono text-red font-medium">+0.100</td>
+                  <td>±0.050</td>
+                  <td><span class="text-red font-medium">FAIL</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="automated-eval-box">
+              <strong>Automated Evaluation:</strong> Maximum observed error (+0.100 kg) exceeds applicable permissible error (±0.050 kg).
+              <div class="eval-result-tag fail">Result: FAIL</div>
+            </div>
+          </div>
+
+          <!-- Test 2 -->
+          <div class="test-result-block">
+            <h4 class="test-title">6.2 Repeatability Test</h4>
+            <table class="bordered-table w-100 mb-3">
+              <thead>
+                <tr>
+                  <th>Trial</th>
+                  <th>Applied Load</th>
+                  <th>Indicated Value</th>
+                  <th>Error</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td class="font-mono">100.000</td><td class="font-mono">100.000</td><td class="font-mono">0.000</td></tr>
+                <tr><td>2</td><td class="font-mono">100.000</td><td class="font-mono">100.000</td><td class="font-mono">0.000</td></tr>
+                <tr><td>3</td><td class="font-mono">100.000</td><td class="font-mono">100.000</td><td class="font-mono">0.000</td></tr>
+              </tbody>
+            </table>
+            <div class="automated-eval-box">
+              <strong>Automated Evaluation:</strong> Maximum deviation (0.000 kg) is within permissible repeatability limits.
+              <div class="eval-result-tag pass">Result: PASS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Compliance Summary & Non-Conformity -->
+        <div class="report-section page-break-after">
+          <h3 class="section-title">7. OIML R-76 Compliance Summary</h3>
+
+          <div class="compliance-summary-grid mb-4">
+            <table class="bordered-table w-100">
+              <thead>
+                <tr>
+                  <th>Evaluation Area</th>
+                  <th>Evidence Count</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Preliminary Examination</td><td>2 files</td><td><span class="badge badge-pass">PASS</span></td></tr>
+                <tr class="row-fail-bg"><td>Accuracy / Weighing Performance</td><td>1 file</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+                <tr><td>Repeatability</td><td>3 files</td><td><span class="badge badge-pass">PASS</span></td></tr>
+                <tr><td>Eccentric Loading</td><td>2 files</td><td><span class="badge badge-pass">PASS</span></td></tr>
+              </tbody>
+            </table>
+            
+            <div class="overall-verdict-box">
+              <span class="verdict-label">Overall Evaluation</span>
+              <div class="verdict-status fail">FAIL</div>
+              <p class="verdict-reason">One applicable evaluation did not satisfy the OIML R-76 requirement.</p>
+            </div>
+          </div>
+
+          <!-- 15. Non-Conformities -->
+          <div class="non-conformity-box">
+            <h4 class="nc-title"><i class="fa-solid fa-triangle-exclamation"></i> Non-Conformity Identified</h4>
+            <div class="nc-grid">
+              <div><span>Test Area</span><strong>Accuracy / Weighing Performance</strong></div>
+              <div><span>Observed Value</span><strong class="text-red">+0.100 kg</strong></div>
+              <div><span>Permitted Tolerance</span><strong>±0.050 kg</strong></div>
+            </div>
+            <p class="nc-remarks"><strong>Officer Remarks:</strong> Recorded deviation at 100kg test load exceeds the applicable permissible error limit for Class III NAWI.</p>
+          </div>
+        </div>
+
+        <!-- 16. Evidence Record -->
+        <div class="report-section">
+          <h3 class="section-title">8. Evidence &amp; Photographic Record</h3>
+          <div class="evidence-record-grid">
+            
+            <div class="ev-record-card">
+              <div class="ev-record-img"><i class="fa-solid fa-scale-unbalanced"></i></div>
+              <div class="ev-record-info">
+                <strong>Evidence 01 — Test Setup</strong>
+                <span>Ref: setup_01.jpg | 28 Sep 2026</span>
+                <p>Instrument positioned on anti-vibration table.</p>
+              </div>
+            </div>
+
+            <div class="ev-record-card">
+              <div class="ev-record-img"><i class="fa-solid fa-display"></i></div>
+              <div class="ev-record-info">
+                <strong>Evidence 02 — Display Reading</strong>
+                <span>Ref: disp_read.jpg | 28 Sep 2026</span>
+                <p>Observation of failed indication at 100kg load.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 17 & 18. Remarks & Signatures -->
+        <div class="report-section">
+          <h3 class="section-title">9. Officer Remarks &amp; Final Declaration</h3>
+          <p class="declaration-text">
+            <strong>Remarks:</strong> Instrument requires recalibration and adjustment of the load cell summing board to correct the positive span error observed at 100kg.
+          </p>
+          <p class="declaration-text mt-3">
+            The instrument identified in this report was evaluated using the applicable test procedures and requirements specified for OIML R-76 evaluation. The recorded observations and automatically derived results are accurately included in this document.
+          </p>
+
+          <div class="signature-grid mt-4">
+            <div class="sig-block">
+              <div class="sig-title">Prepared By</div>
+              <div class="sig-line"></div>
+              <strong>Dr. Ananya Sharma</strong>
+              <span>Test Officer (LM-TO-0247)</span>
+              <span>Date: 29 Sep 2026</span>
+            </div>
+            <div class="sig-block">
+              <div class="sig-title">Reviewed / Approved By</div>
+              <div class="sig-line"></div>
+              <strong>Dr. Vikram Singh</strong>
+              <span>Chief Metrologist</span>
+              <span>Date: 30 Sep 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20. Report Control -->
+        <div class="report-control-footer">
+          <div>Report ID: <strong>RPT-2026-0078</strong></div>
+          <div>Version: <strong>1.0</strong></div>
+          <div>Generated On: <strong>29 Sep 2026</strong></div>
+          <div>Status: <strong>Finalized</strong></div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/Report.js"></script>
+</body>
+</html>

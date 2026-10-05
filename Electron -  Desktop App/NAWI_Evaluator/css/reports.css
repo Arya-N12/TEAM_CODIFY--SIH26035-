@@ -1,0 +1,54 @@
+/* Specific styles for reports */
+
+/* Ensure the table container handles horizontal overflow cleanly */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Enforce a minimum width so columns and icons never compress on small screens */
+.data-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+}
+
+/* Wrapper to maintain consistent gaps and prevent icons from wrapping into multiple lines */
+.output-icons-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: max-content; 
+}
+
+/* Substantially enlarged icons with generous padding for accessible click targets */
+.output-icon {
+  font-size: 1.75rem; 
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-sm, 4px);
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Interactive hover states with a slight structural lift */
+.output-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Contextual background highlights utilizing existing UI color variables */
+.output-icon.text-red:hover { 
+  background-color: var(--color-red-light); 
+}
+.output-icon.text-blue:hover { 
+  background-color: var(--color-blue-light); 
+}
+.output-icon.text-amber:hover { 
+  background-color: var(--color-amber-light); 
+}
+.output-icon.text-purple:hover { 
+  background-color: var(--bg-canvas); 
+}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metrology Evaluator - Dashboard</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <link rel="stylesheet" href="../../NAWI_user/css/global.css">
+  <link rel="stylesheet" href="../../NAWI_user/css/style.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>Metrology Evaluator</h2>
+        <span>OIML R-76 Compliance</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="nav-menu" id="mainNav">
+      <a href="dashboard.html" class="nav-item active" id="nav-dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="review-queue.html" class="nav-item" id="nav-review-queue">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Review Queue</span>
+      </a>
+      <a href="review-workspace.html" class="nav-item" id="nav-review-workspace" >
+        <i class="fa-solid fa-laptop-medical"></i>
+        <span>Review Workspace</span>
+      </a>
+      <a href="approvals.html" class="nav-item" id="nav-approvals">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Approvals</span>
+      </a>
+      <a href="reports.html" class="nav-item" id="nav-reports">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="repository.html" class="nav-item" id="nav-repository">
+        <i class="fa-solid fa-database"></i>
+        <span>Repository</span>
+      </a>
+      <a href="notifications.html" class="nav-item" id="nav-notifications">
+        <i class="fa-regular fa-bell"></i>
+        <span>Notifications</span>
+      </a>
+      <a href="audit-trail.html" class="nav-item" id="nav-audit-trail">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>Audit Trail</span>
+      </a>
+
+      <div class="nav-divider"></div>
+      
+      <!-- R-76 Assistant Trigger -->
+      <a href="#" class="nav-item" id="assistantBtn">
+        <i class="fa-solid fa-robot" style="color: var(--color-purple)"></i>
+        <span>R-76 Assistant</span>
+      </a>
+
+      <div class="personal-info-card" style="margin-top: 10px;">
+        <div class="user-avatar-small">MR</div>
+        <div class="user-meta">
+          <strong>Michael Reviewer</strong>
+          <span>Senior Metrology Evaluator</span>
+        </div>
+      </div>
+      
+     <a href="../../Homepage.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles" id="headerTitles">
+        <h1>Dashboard</h1>
+        <p>Review, validate and approve OIML R-76 test submissions.</p>
+      </div>
+
+      <div class="header-actions">
+        <div class="rule-version-pill">
+          <i class="fa-solid fa-book-open"></i> OIML R-76 v2006.1
+        </div>
+        <button class="notification-btn" aria-label="Notifications" onclick="window.location.href='notifications.html'">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge"></span>
+        </button>
+        <div class="datetime-pill">
+          <i class="fa-regular fa-calendar"></i>
+          <div>
+            <span class="date-str" id="currentDate">02 Oct 2026</span>
+            <span class="login-str">Last login: 08:15 AM</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Main Viewport -->
+    <main class="dashboard-content" id="mainContent">
+<!-- KPI Summary Cards -->
+        <section class="kpi-grid">
+          <article class="kpi-card" onclick="switchView('queue')" style="cursor: pointer;">
+            <div class="kpi-header">
+              <span class="kpi-icon icon-amber"><i class="fa-solid fa-hourglass-half"></i></span>
+              <span class="kpi-label">Pending Reviews</span>
+            </div>
+            <div class="kpi-value">12</div>
+            <div class="kpi-subtext">Ready for evaluator action</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon icon-blue"><i class="fa-solid fa-spinner"></i></span>
+              <span class="kpi-label">In Progress</span>
+            </div>
+            <div class="kpi-value">5</div>
+            <div class="kpi-subtext">Currently evaluating</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon icon-red" style="background:#fee2e2; color:#dc2626"><i class="fa-solid fa-rotate-left"></i></span>
+              <span class="kpi-label">Returned for Correction</span>
+            </div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-subtext">Sent back to technician</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon icon-green"><i class="fa-solid fa-check-double"></i></span>
+              <span class="kpi-label">Approved</span>
+            </div>
+            <div class="kpi-value">48</div>
+            <div class="kpi-subtext">This month</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon icon-purple"><i class="fa-solid fa-robot"></i></span>
+              <span class="kpi-label">Anomaly Alerts</span>
+            </div>
+            <div class="kpi-value">2</div>
+            <div class="kpi-subtext">Requires human review</div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon icon-amber" style="background:#fef3c7; color:#d97706"><i class="fa-solid fa-file-contract"></i></span>
+              <span class="kpi-label">OCR Mismatches</span>
+            </div>
+            <div class="kpi-value">4</div>
+            <div class="kpi-subtext">Data verification needed</div>
+          </article>
+        </section>
+
+        <!-- Tables Grid (Active Evaluations & Recent Reports) -->
+        <section class="tables-grid" style="margin-top:20px; grid-template-columns: 2fr 1fr;">
+          <!-- Review Queue Summary Table -->
+          <div class="card table-card">
+            <div class="card-header">
+              <div>
+                <h3>Review Queue Summary</h3>
+              </div>
+              <a href="#" class="view-link" onclick="switchView('queue')">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>App No.</th>
+                    <th>Model</th>
+                    <th>Accuracy</th>
+                    <th>Result</th>
+                    <th>Flags</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboardQueueTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Critical Alerts -->
+          <div class="card table-card alerts-card">
+            <div class="card-header">
+              <div>
+                <h3>Critical Alerts</h3>
+              </div>
+            </div>
+            <div class="alerts-list">
+              <div class="alert-item ocr-alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div class="alert-text">
+                  <strong>OCR Mismatch: APP-2026-081</strong>
+                  <span>Max capacity manual entry differs from nameplate.</span>
+                </div>
+              </div>
+              <div class="alert-item anomaly-alert">
+                <i class="fa-solid fa-robot"></i>
+                <div class="alert-text">
+                  <strong>Measurement Anomaly: APP-2026-079</strong>
+                  <span>Unusual error pattern detected in Eccentricity test.</span>
+                </div>
+              </div>
+              <div class="alert-item missing-alert">
+                <i class="fa-regular fa-file-excel"></i>
+                <div class="alert-text">
+                  <strong>Missing Evidence: APP-2026-075</strong>
+                  <span>Test observation photographs not uploaded.</span>
+                </div>
+              </div>
+              <div class="alert-item info-alert">
+                <i class="fa-solid fa-circle-info"></i>
+                <div class="alert-text">
+                  <strong>Rule Package Updated</strong>
+                  <span>OIML R-76 rules engine updated to v2006.1.2.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+  </div>
+  
+  <!-- Right R-76 Assistant Panel -->
+  <div class="chatbot-panel" id="assistantPanel" hidden>
+    <div class="chatbot-panel-header">
+      <div class="chatbot-panel-title">
+        <i class="fa-solid fa-robot"></i> R-76 Knowledge Assistant
+      </div>
+      <div class="chatbot-panel-actions">
+        <button id="closeAssistantBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="chatbot-panel-messages" id="chatbotMessages">
+      <div class="chatbot-message bot">
+        Hello Evaluator. I am the OIML R-76 Knowledge Assistant. I can help explain compliance calculations, interpret anomalies, and quote procedure guidelines. I cannot modify the authoritative compliance decisions.
+      </div>
+      <div class="chatbot-message user">
+        Why did the Eccentricity test fail for APP-2026-081?
+      </div>
+      <div class="chatbot-message bot">
+        The eccentricity test failed because the calculated error at the Back Right position (0.15 kg) exceeded the Maximum Permissible Error (MPE) of ±0.10 kg for a Class III instrument at 1500e load.
+        <span class="chatbot-source">Source: OIML R-76-1 (2006) Section 3.6.2</span>
+      </div>
+    </div>
+    <div class="chatbot-compose">
+      <textarea id="assistantInput" placeholder="Ask a technical question..."></textarea>
+      <button onclick="sendAssistantMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="confirmModal" style="display:none;">
+    <div class="modal card">
+      <h3 id="modalTitle">Confirm Action</h3>
+      <p id="modalBody" class="mt-2 text-muted">Are you sure you want to perform this action?</p>
+      <div class="mt-4 text-right">
+        <button class="btn-outline mr-2" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" id="modalConfirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+
+</html>
