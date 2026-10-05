@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: voice-entry-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: ASR_ENGINE
+        value: faster_whisper
+      - key: WHISPER_MODEL
+        value: tiny.en
+      - key: WHISPER_DEVICE
+        value: cpu
+      - key: WHISPER_COMPUTE_TYPE
+        value: int8
+      - key: MAX_AUDIO_SIZE_MB
+        value: "10"
