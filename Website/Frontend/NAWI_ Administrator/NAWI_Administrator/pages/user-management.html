@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management - Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/admin-style.css" />
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="brand-text">
+        <h2>Administrator</h2>
+        <span>OIML R-76 Platform</span>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-group-title">Overview</div>
+      <a href="../index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+      <div class="nav-group-title">User & Access</div>
+      <a href="./user-management.html" class="nav-item active"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+      <a href="./roles-permissions.html" class="nav-item"><i class="fa-solid fa-user-shield"></i><span>Roles & Permissions</span></a>
+      <a href="./lab-management.html" class="nav-item"><i class="fa-solid fa-building-flag"></i><span>Lab Management</span></a>
+      <div class="nav-group-title">OIML Configuration</div>
+      <a href="./rule-packages.html" class="nav-item"><i class="fa-solid fa-file-code"></i><span>Rule Packages</span></a>
+      <a href="./test-config.html" class="nav-item"><i class="fa-solid fa-sliders"></i><span>Test Configuration</span></a>
+      <div class="nav-group-title">Platform Governance</div>
+      <a href="./reports-repo.html" class="nav-item"><i class="fa-solid fa-file-contract"></i><span>Reports Repository</span></a>
+      <a href="./documents.html" class="nav-item"><i class="fa-regular fa-folder-open"></i><span>Evidence Documents</span></a>
+      <div class="nav-group-title">Intelligence</div>
+      <a href="./ai-services.html" class="nav-item"><i class="fa-solid fa-microchip"></i><span>AI Services</span></a>
+      <a href="./knowledge-base.html" class="nav-item"><i class="fa-solid fa-book-atlas"></i><span>Knowledge Base</span></a>
+      <a href="./localization.html" class="nav-item"><i class="fa-solid fa-language"></i><span>Localization</span></a>
+      <div class="nav-group-title">Security & System</div>
+      <a href="./system-monitoring.html" class="nav-item"><i class="fa-solid fa-server"></i><span>System Monitoring</span></a>
+      <a href="./offline-sync.html" class="nav-item"><i class="fa-solid fa-rotate"></i><span>Offline Sync</span></a>
+      <a href="./security.html" class="nav-item"><i class="fa-solid fa-lock"></i><span>Security Settings</span></a>
+      <a href="./audit-trail.html" class="nav-item"><i class="fa-solid fa-list-check"></i><span>Audit Trail</span></a>
+      <a href="./notifications.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i><span>Notifications</span></a>
+      <a href="./backup-settings.html" class="nav-item"><i class="fa-solid fa-hard-drive"></i><span>Backup & Recovery</span></a>
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">S</div>
+        <div class="user-meta"><strong>System Admin</strong><span>Superuser</span></div>
+      </div>
+      <a href="../../../index.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>User Management</h1>
+        <p>Create, manage and control authorized platform users.</p>
+      </div>
+      <div class="header-actions">
+        <div class="active-rule-pill"><i class="fa-solid fa-scale-balanced"></i> OIML R-76 (v2.4 Active)</div>
+        <button class="notification-btn"><i class="fa-regular fa-bell"></i><span class="notification-badge"></span></button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      
+      <div class="card">
+        <div class="page-header mb-4" style="margin-bottom: 20px;">
+          <div class="search-filter-bar" style="margin: 0; width: 100%;">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="form-control" placeholder="Search by name, ID, email, or role...">
+            </div>
+            <select class="form-control" style="width: 150px;">
+              <option>All Roles</option>
+              <option>Lab Technician</option>
+              <option>Metrology Evaluator</option>
+              <option>Administrator</option>
+            </select>
+            <select class="form-control" style="width: 150px;">
+              <option>Status: All</option>
+              <option>Active</option>
+              <option>Pending</option>
+              <option>Suspended</option>
+            </select>
+            <button class="btn btn-secondary"><i class="fa-solid fa-filter"></i> Filter</button>
+            <div style="flex-grow: 1;"></div>
+            <button class="btn btn-primary" data-modal-target="addUserModal"><i class="fa-solid fa-user-plus"></i> Add User</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Name / Email</th>
+                <th>Role</th>
+                <th>Laboratory</th>
+                <th>Status</th>
+                <th>Last Login</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">USR-1042</td>
+                <td>
+                  <div style="font-weight: 600;">Dr. Ananya Sharma</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">ananya.sharma@nawi.gov.in</div>
+                </td>
+                <td>Metrology Evaluator</td>
+                <td>Central Metrology Lab (Delhi)</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>Today, 10:24 AM</td>
+                <td>
+                  <button class="btn-icon" title="View/Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                  <button class="btn-icon" title="Suspend"><i class="fa-solid fa-ban"></i></button>
+                  <button class="btn-icon" title="Reset Credentials"><i class="fa-solid fa-key"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium">USR-1089</td>
+                <td>
+                  <div style="font-weight: 600;">Rahul Verma</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">rahul.v@techlabs.in</div>
+                </td>
+                <td>Lab Technician</td>
+                <td>TechLabs Weights & Measures</td>
+                <td><span class="badge badge-active">Active</span></td>
+                <td>Yesterday, 04:15 PM</td>
+                <td>
+                  <button class="btn-icon" title="View/Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                  <button class="btn-icon" title="Suspend"><i class="fa-solid fa-ban"></i></button>
+                  <button class="btn-icon" title="Reset Credentials"><i class="fa-solid fa-key"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium">USR-1102</td>
+                <td>
+                  <div style="font-weight: 600;">Priya Singh</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">priya.s@nawi.gov.in</div>
+                </td>
+                <td>Administrator</td>
+                <td>HQ Operations</td>
+                <td><span class="badge badge-pending">Pending</span></td>
+                <td>Never</td>
+                <td>
+                  <button class="btn-icon" title="Activate"><i class="fa-solid fa-check"></i></button>
+                  <button class="btn-icon" title="View/Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                  <button class="btn-icon" title="Reset Credentials"><i class="fa-solid fa-key"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium">USR-0943</td>
+                <td>
+                  <div style="font-weight: 600;">Vikram Patel</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">v.patel@gujarat-metrology.in</div>
+                </td>
+                <td>Lab Technician</td>
+                <td>Gujarat State Metrology</td>
+                <td><span class="badge badge-inactive">Suspended</span></td>
+                <td>Oct 01, 2026</td>
+                <td>
+                  <button class="btn-icon" title="Reactivate"><i class="fa-solid fa-rotate-left"></i></button>
+                  <button class="btn-icon" title="View/Edit"><i class="fa-regular fa-pen-to-square"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Showing 1 to 4 of 42 entries</span>
+          <div style="display: flex; gap: 4px;">
+            <button class="btn btn-secondary" style="padding: 4px 10px;" disabled>Prev</button>
+            <button class="btn btn-primary" style="padding: 4px 12px;">1</button>
+            <button class="btn btn-secondary" style="padding: 4px 12px;">2</button>
+            <button class="btn btn-secondary" style="padding: 4px 12px;">3</button>
+            <button class="btn btn-secondary" style="padding: 4px 10px;">Next</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal-backdrop" id="addUserModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New User</h3>
+        <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Enter full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="user@domain.com">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label">Employee / Officer ID</label>
+              <input type="text" class="form-control" placeholder="EMP-XXXX">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="text" class="form-control" placeholder="+91 ">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Role</label>
+            <select class="form-control">
+              <option value="">Select a role...</option>
+              <option>Lab Technician</option>
+              <option>Metrology Evaluator</option>
+              <option>Administrator</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Assigned Laboratory / Organization</label>
+            <select class="form-control">
+              <option value="">Select laboratory...</option>
+              <option>Central Metrology Lab (Delhi)</option>
+              <option>TechLabs Weights & Measures</option>
+              <option>Gujarat State Metrology</option>
+              <option>HQ Operations</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Authentication Method</label>
+            <select class="form-control">
+              <option>Standard Password</option>
+              <option>SSO (Single Sign-On)</option>
+              <option>Certificate Based</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-modal-close>Cancel</button>
+        <button class="btn btn-primary">Create User</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/admin-script.js"></script>
+</body>
+</html>

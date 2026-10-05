@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instrument Repository — NAWI System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/instrment-repo.css" />
+</head>
+
+<body>
+
+  <!-- MASTER FIXED LEFT SIDEBAR -->
+  <aside class="sidebar no-print">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>NAWI System</h2>
+        <span>OIML R-76 Evaluation</span>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Overview</span>
+      </a>
+      <a href="../pages/new-test.html" class="nav-item">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>New Test</span>
+      </a>
+      <a href="../pages/my-tests.html" class="nav-item">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <span>My Tests</span>
+      </a>
+      <a href="../pages/test-evaluation.html" class="nav-item">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Test Evaluation</span>
+      </a>
+      <a href="../pages/Report.html" class="nav-item">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="../pages/instrment-repo.html" class="nav-item active">
+        <i class="fa-solid fa-database"></i>
+        <span>Instrument Repository</span>
+      </a>
+
+      <div class="nav-divider"></div>
+
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+
+      <a href="../pages/personal-info.html" class="nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile & Account</span>
+      </a>
+      <a href="../../index.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <div class="main-wrapper">
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>Instrument Repository</h1>
+        <p>Centralized repository of registered Non-Automatic Weighing Instruments and their test history.</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-secondary" id="btnExportData"><i class="fa-solid fa-download"></i> Export
+          Data</button>
+        <button type="button" class="btn-primary"><i class="fa-solid fa-plus"></i> Add Instrument</button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+
+      <!-- 1. Repository Overview Cards -->
+      <section class="kpi-grid mb-4">
+        <article class="modern-card kpi-card">
+          <div class="kpi-icon-wrap bg-blue-light text-blue"><i class="fa-solid fa-scale-unbalanced"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">Total Instruments</span>
+            <span class="kpi-value" id="kpiTotal">248</span>
+          </div>
+        </article>
+        <article class="modern-card kpi-card">
+          <div class="kpi-icon-wrap bg-green-light text-green"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">Active & Verified</span>
+            <span class="kpi-value" id="kpiActive">221</span>
+          </div>
+        </article>
+        <article class="modern-card kpi-card">
+          <div class="kpi-icon-wrap bg-amber-light text-amber"><i class="fa-solid fa-microscope"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">Under Testing</span>
+            <span class="kpi-value" id="kpiTesting">17</span>
+          </div>
+        </article>
+        <article class="modern-card kpi-card">
+          <div class="kpi-icon-wrap bg-purple-light text-purple"><i class="fa-regular fa-file-pdf"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">Reports Available</span>
+            <span class="kpi-value" id="kpiReports">236</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- 3. Search & Filters -->
+      <section class="modern-card p-4 mb-4 filter-panel">
+        <div class="search-bar-row mb-3">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search by Instrument ID, Model or Manufacturer..." />
+          </div>
+        </div>
+        <div class="filters-row">
+          <div class="form-group">
+            <label>Instrument Type</label>
+            <select class="form-select" id="filterType">
+              <option value="All">All Types</option>
+              <option value="Electronic Scale">Electronic Scale</option>
+              <option value="Platform Scale">Platform Scale</option>
+              <option value="Weighbridge">Weighbridge</option>
+              <option value="Electronic Balance">Electronic Balance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Accuracy Class</label>
+            <select class="form-select" id="filterClass">
+              <option value="All">All Classes</option>
+              <option value="I">Class I</option>
+              <option value="II">Class II</option>
+              <option value="III">Class III</option>
+              <option value="IIII">Class IIII</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select class="form-select" id="filterStatus">
+              <option value="All">All Statuses</option>
+              <option value="Verified">Verified</option>
+              <option value="Under Testing">Under Testing</option>
+              <option value="Pending">Pending</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Sort By Date</label>
+            <select class="form-select" id="sortDate">
+              <option value="last_tested">Last Tested</option>
+              <option value="registration">Registration Date</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Instrument List Table -->
+      <section class="modern-card table-card">
+        <div class="table-responsive">
+          <table class="modern-table">
+            <thead>
+              <tr>
+                <th>Instrument ID</th>
+                <th>Instrument / Model</th>
+                <th>Manufacturer</th>
+                <th>Class</th>
+                <th>Max Cap</th>
+                <th>e</th>
+                <th>Status</th>
+                <th>Last Tested</th>
+                <th>QR Code</th>
+                <th class="text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="instrumentTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <span class="text-muted"><i class="fa-solid fa-circle-info"></i> Displaying sample records for NAWI
+            repository.</span>
+          <div class="pagination">
+            <button class="btn-icon" disabled><i class="fa-solid fa-chevron-left"></i></button>
+            <span class="page-indicator">Page 1 of 12</span>
+            <button class="btn-icon"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- RIGHT-SIDE DRAWER (Instrument Details) -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="details-drawer" id="detailsDrawer">
+    <div class="drawer-header">
+      <div class="drawer-titles">
+        <div class="drawer-badge" id="drawerStatusBadge">Verified</div>
+        <h2 id="drawerInstId">NAWI-001</h2>
+        <p id="drawerModelTitle">Electronic Platform Scale — EPS-500</p>
+      </div>
+      <div class="drawer-header-actions">
+        <button class="btn-icon" title="Edit Record"><i class="fa-regular fa-pen-to-square"></i></button>
+        <button class="btn-icon close-btn" id="btnCloseDrawer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="drawer-content">
+      <div class="drawer-section">
+        <h4 class="section-title"><i class="fa-solid fa-scale-balanced"></i> Metrological Characteristics</h4>
+        <div class="info-grid">
+          <div class="info-cell"><span>Manufacturer</span><strong id="drawerMfr">ABC WeighTech</strong></div>
+          <div class="info-cell"><span>Approval No.</span><strong>MA/NAWI/2026/001</strong></div>
+          <div class="info-cell"><span>Serial Number</span><strong class="font-mono">EPS500-26-00184</strong></div>
+          <div class="info-cell"><span>Accuracy Class</span><strong id="drawerClass">III (Medium)</strong></div>
+          <div class="info-cell"><span>Capacity (Max/Min)</span><strong id="drawerCap">500 kg / 2 kg</strong></div>
+          <div class="info-cell"><span>Scale Interval (e/d)</span><strong id="drawerInt">100 g / 100 g</strong></div>
+          <div class="info-cell"><span>Verification Intervals (n)</span><strong>5,000</strong></div>
+        </div>
+      </div>
+      <!-- Latest Evaluation Results -->
+      <div class="drawer-section mt-4">
+        <h4 class="section-title"><i class="fa-solid fa-microscope"></i> Latest Evaluation Results</h4>
+        <div class="latest-test-banner">
+          <div class="test-header">
+            <div>
+              <strong class="font-mono text-blue">TEST-2026-0091</strong>
+              <span class="text-sm text-muted"> • 24 Sep 2026 • OIML R-76</span>
+            </div>
+            <span class="badge badge-pass">PASS</span>
+          </div>
+          <table class="minimal-table mt-2">
+            <tr>
+              <td>Increasing-load test</td>
+              <td class="text-right text-green font-medium">Pass</td>
+            </tr>
+            <tr>
+              <td>Decreasing-load test</td>
+              <td class="text-right text-green font-medium">Pass</td>
+            </tr>
+            <tr>
+              <td>Eccentricity test</td>
+              <td class="text-right text-green font-medium">Pass</td>
+            </tr>
+            <tr>
+              <td>Repeatability test</td>
+              <td class="text-right text-green font-medium">Pass</td>
+            </tr>
+            <tr>
+              <td>Tare & Zero-setting</td>
+              <td class="text-right text-green font-medium">Pass</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- Test History -->
+      <div class="drawer-section mt-4">
+        <h4 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Test History</h4>
+        <div class="history-table-wrapper">
+          <table class="modern-table w-100 text-sm">
+            <thead>
+              <tr>
+                <th>Test ID</th>
+                <th>Date</th>
+                <th>Result</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-mono text-main font-medium">TEST-2026-0091</td>
+                <td class="text-muted">24 Sep 2026</td>
+                <td><span class="badge badge-pass">Pass</span></td>
+                <td class="text-right"><button class="btn-link">Report</button></td>
+              </tr>
+              <tr>
+                <td class="font-mono text-main font-medium">TEST-2025-0048</td>
+                <td class="text-muted">11 Aug 2025</td>
+                <td><span class="badge badge-pass">Pass</span></td>
+                <td class="text-right"><button class="btn-link">Report</button></td>
+              </tr>
+              <tr>
+                <td class="font-mono text-main font-medium">TEST-2024-0021</td>
+                <td class="text-muted">18 Jul 2024</td>
+                <td><span class="badge badge-pass">Pass</span></td>
+                <td class="text-right"><button class="btn-link">Report</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Documents -->
+      <div class="drawer-section mt-4">
+        <h4 class="section-title"><i class="fa-solid fa-folder-open"></i> Documents & Evidence</h4>
+        <p class="text-sm text-muted mb-2">Attached documentation for model approval and verification.</p>
+        <div class="doc-list">
+          <div class="doc-item"><i class="fa-solid fa-file-pdf text-red"></i>
+            <div class="doc-info"><strong>Model Approval Certificate</strong><span>Manufacturer Document</span></div>
+            <button class="btn-icon"><i class="fa-solid fa-download"></i></button>
+          </div>
+          <div class="doc-item"><i class="fa-solid fa-file-pdf text-red"></i>
+            <div class="doc-info"><strong>Technical Specifications</strong><span>ABC WeighTech • v2.1</span></div>
+            <button class="btn-icon"><i class="fa-solid fa-download"></i></button>
+          </div>
+          <div class="doc-item"><i class="fa-solid fa-image text-blue"></i>
+            <div class="doc-info"><strong>Instrument Front View</strong><span>Photograph</span></div><button
+              class="btn-icon"><i class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn-secondary w-100 justify-center"><i class="fa-solid fa-clock-rotate-left"></i> View Full
+        History</button>
+      <button class="btn-primary w-100 justify-center"><i class="fa-solid fa-play"></i> Generate New Test</button>
+    </div>
+  </aside>
+
+  <!-- Floating Chatbot Button -->
+  <button type="button" class="floating-chatbot-btn" aria-label="Open Chatbot Assistant" aria-expanded="false"
+    aria-controls="chatbotPanel">
+    <i class="fa-regular fa-comments" aria-hidden="true"></i>
+    <span>Chat with AI</span>
+  </button>
+
+  <!-- QR CODE VERIFICATION MODAL -->
+  <div class="modal-backdrop" id="qrModalBackdrop"></div>
+  <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="qrModalTitle">
+    <div class="qr-modal-header">
+      <div>
+        <h3 class="qr-modal-title" id="qrModalTitle">Physical Instrument QR Verification Sticker</h3>
+        <p class="qr-modal-subtitle text-sm text-muted">Print this sticker and affix directly to the weighing instrument for on-site
+          scanning</p>
+      </div>
+      <button type="button" class="btn-icon close-btn" id="btnCloseQrModal" aria-label="Close QR sticker preview"><i
+          class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div class="qr-modal-body">
+      <div class="qr-controls">
+        <div class="format-toggles">
+          <span class="format-label text-sm font-medium">Label Size</span>
+          <button type="button" class="toggle-btn active" data-format="layout-classic" aria-pressed="true">Classic (80x50 mm)</button>
+          <button type="button" class="toggle-btn" data-format="layout-square" aria-pressed="false">Square (50x50 mm)</button>
+          <button type="button" class="toggle-btn" data-format="layout-wide" aria-pressed="false">Wide (120x50 mm)</button>
+          <button type="button" class="toggle-btn" data-format="layout-large" aria-pressed="false">Large (100x70 mm)</button>
+          <button type="button" class="toggle-btn" data-format="layout-slim" aria-pressed="false">Slim (100x35 mm)</button>
+        </div>
+        <div class="qr-actions">
+          <button type="button" class="btn-secondary" id="btnDownloadQr"><i class="fa-solid fa-download"></i> Download 
+            Sticker</button>
+          <!-- <button type="button" class="btn-primary" id="btnPrintQr"><i class="fa-solid fa-print"></i> Print Sticker</button> -->
+        </div>
+      </div>
+      <div class="qr-preview-area">
+        <div class="qr-label-card layout-classic" id="qrLabelCard">
+          <div class="qr-label-header">
+            <span><i class="fa-solid fa-scale-balanced"></i> LEGAL METROLOGY NAWI</span>
+            <span class="badge">OIML R 76</span>
+          </div>
+          <div class="qr-label-content">
+            <div class="qr-img-wrapper">
+              <canvas id="qrImageElement"></canvas>
+            </div>
+            <div class="qr-label-details">
+              <h4 id="qrInstModelTitle">Model Name</h4>
+              <p class="text-sm mfr-text" id="qrInstMfrTitle">Manufacturer</p>
+
+              <div class="details-grid">
+                <p class="text-sm">ID: <strong class="font-mono" id="qrInstIdVal">ID</strong></p>
+                <p class="text-sm">Status: <strong class="text-blue" id="qrInstStatusVal">Status</strong></p>
+                <p class="text-sm">Tested: <strong id="qrInstDateVal">Date</strong></p>
+              </div>
+
+              <div class="qr-scan-text mt-2">
+                <span>SCAN TO VERIFY COMPLIANCE</span><br>
+                <span id="qrInstIdMini"></span>
+              </div>
+            </div>
+          </div>
+          <div class="qr-label-footer">
+            <span>LEGAL METROLOGY VERIFICATION</span>
+            <span class="text-green font-medium" id="qrFooterStatus"><i class="fa-solid fa-circle-check"></i> PASS/FAIL
+              CHECK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+  <!-- NEW SCRIPT: SheetJS for Excel Export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <!-- QR Code Library - Using QRCode.js with different CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.min.js"></script>
+  <!-- html2canvas for sticker saving -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/instrment-repo.js"></script>
+  <script src="../js/qa-assistant.js"></script>
+  <script src="../js/chat-widget.js"></script>
+</body>
+
+</html>

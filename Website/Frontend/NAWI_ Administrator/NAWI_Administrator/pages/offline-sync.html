@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline Sync Monitor - Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/admin-style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="brand-text"><h2>Administrator</h2><span>OIML R-76 Platform</span></div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-group-title">Overview</div>
+      <a href="../index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+      <div class="nav-group-title">User & Access</div>
+      <a href="./user-management.html" class="nav-item"><i class="fa-solid fa-users"></i><span>User Management</span></a>
+      <a href="./roles-permissions.html" class="nav-item"><i class="fa-solid fa-user-shield"></i><span>Roles & Permissions</span></a>
+      <a href="./lab-management.html" class="nav-item"><i class="fa-solid fa-building-flag"></i><span>Lab Management</span></a>
+      <div class="nav-group-title">OIML Configuration</div>
+      <a href="./rule-packages.html" class="nav-item"><i class="fa-solid fa-file-code"></i><span>Rule Packages</span></a>
+      <a href="./test-config.html" class="nav-item"><i class="fa-solid fa-sliders"></i><span>Test Configuration</span></a>
+      <div class="nav-group-title">Platform Governance</div>
+      <a href="./reports-repo.html" class="nav-item"><i class="fa-solid fa-file-contract"></i><span>Reports Repository</span></a>
+      <a href="./documents.html" class="nav-item"><i class="fa-regular fa-folder-open"></i><span>Evidence Documents</span></a>
+      <div class="nav-group-title">Intelligence</div>
+      <a href="./ai-services.html" class="nav-item"><i class="fa-solid fa-microchip"></i><span>AI Services</span></a>
+      <a href="./knowledge-base.html" class="nav-item"><i class="fa-solid fa-book-atlas"></i><span>Knowledge Base</span></a>
+      <a href="./localization.html" class="nav-item"><i class="fa-solid fa-language"></i><span>Localization</span></a>
+      <div class="nav-group-title">Security & System</div>
+      <a href="./system-monitoring.html" class="nav-item"><i class="fa-solid fa-server"></i><span>System Monitoring</span></a>
+      <a href="./offline-sync.html" class="nav-item active"><i class="fa-solid fa-rotate"></i><span>Offline Sync</span></a>
+      <a href="./security.html" class="nav-item"><i class="fa-solid fa-lock"></i><span>Security Settings</span></a>
+      <a href="./audit-trail.html" class="nav-item"><i class="fa-solid fa-list-check"></i><span>Audit Trail</span></a>
+      <a href="./notifications.html" class="nav-item"><i class="fa-solid fa-bullhorn"></i><span>Notifications</span></a>
+      <a href="./backup-settings.html" class="nav-item"><i class="fa-solid fa-hard-drive"></i><span>Backup & Recovery</span></a>
+   
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">S</div>
+        <div class="user-meta">
+          <strong>System Admin</strong>
+          <span>Superuser</span>
+        </div>
+      </div>
+      
+      <a href="../../../index.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>Offline Sync & Conflict Monitor</h1>
+        <p>Monitor the offline-first synchronization mechanism and resolve conflicts.</p>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <div class="kpi-grid">
+        <article class="kpi-card">
+          <div class="kpi-header"><span class="kpi-icon icon-blue"><i class="fa-solid fa-clock"></i></span><span class="kpi-label">Pending Sync</span></div>
+          <div class="kpi-value">12</div>
+        </article>
+        <article class="kpi-card">
+          <div class="kpi-header"><span class="kpi-icon icon-green"><i class="fa-solid fa-check"></i></span><span class="kpi-label">Successfully Synced</span></div>
+          <div class="kpi-value">1.4K</div>
+        </article>
+        <article class="kpi-card" style="border-color: rgba(245, 158, 11, 0.5);">
+          <div class="kpi-header"><span class="kpi-icon icon-amber"><i class="fa-solid fa-code-compare"></i></span><span class="kpi-label">Conflicts</span></div>
+          <div class="kpi-value" style="color: var(--color-amber);">1</div>
+        </article>
+      </div>
+
+      <div class="card" style="border-left: 4px solid var(--color-amber);">
+        <div class="card-header">
+          <h3>Active Conflicts</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Conflict ID</th>
+                <th>Application</th>
+                <th>Users Involved</th>
+                <th>Field</th>
+                <th>Detected Time</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">CNF-0982</td>
+                <td>APP-2026-089</td>
+                <td>R. Verma (Local) vs A. Sharma (Server)</td>
+                <td>Environmental Conditions (Temp)</td>
+                <td>10 mins ago</td>
+                <td>
+                  <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Resolve</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="card mt-4">
+        <div class="card-header">
+          <h3>Sync Queue</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Event ID</th>
+                <th>Operation</th>
+                <th>User</th>
+                <th>Timestamp</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">EVT-Q-110</td>
+                <td>Update Observation (Load: 10kg)</td>
+                <td>R. Verma</td>
+                <td>2 mins ago</td>
+                <td><span class="badge badge-pending">Pending</span></td>
+              </tr>
+              <tr>
+                <td class="font-medium">EVT-Q-109</td>
+                <td>Upload Image</td>
+                <td>R. Verma</td>
+                <td>3 mins ago</td>
+                <td><span class="badge badge-pending">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/admin-script.js"></script>
+</body>
+</html>

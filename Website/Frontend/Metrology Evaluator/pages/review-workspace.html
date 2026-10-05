@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metrology Evaluator - Review Workspace</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <link rel="stylesheet" href="../../NAWI_user/css/global.css">
+  <link rel="stylesheet" href="../../NAWI_user/css/style.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/review-workspace.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>Metrology Evaluator</h2>
+        <span>OIML R-76 Compliance</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="nav-menu" id="mainNav">
+      <a href="dashboard.html" class="nav-item" id="nav-dashboard">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="review-queue.html" class="nav-item" id="nav-review-queue">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Review Queue</span>
+      </a>
+      <a href="review-workspace.html" class="nav-item active" id="nav-review-workspace">
+        <i class="fa-solid fa-laptop-medical"></i>
+        <span>Review Workspace</span>
+      </a>
+      <a href="approvals.html" class="nav-item" id="nav-approvals">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Approvals</span>
+      </a>
+      <a href="reports.html" class="nav-item" id="nav-reports">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="repository.html" class="nav-item" id="nav-repository">
+        <i class="fa-solid fa-database"></i>
+        <span>Repository</span>
+      </a>
+      <a href="notifications.html" class="nav-item" id="nav-notifications">
+        <i class="fa-regular fa-bell"></i>
+        <span>Notifications</span>
+      </a>
+      <a href="audit-trail.html" class="nav-item" id="nav-audit-trail">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>Audit Trail</span>
+      </a>
+
+      <div class="nav-divider"></div>
+      
+      <!-- R-76 Assistant Trigger -->
+      <a href="#" class="nav-item" id="assistantBtn">
+        <i class="fa-solid fa-robot" style="color: var(--color-purple)"></i>
+        <span>R-76 Assistant</span>
+      </a>
+
+      <div class="personal-info-card" style="margin-top: 10px;">
+        <div class="user-avatar-small">MR</div>
+        <div class="user-meta">
+          <strong>Michael Reviewer</strong>
+          <span>Senior Metrology Evaluator</span>
+        </div>
+      </div>
+      
+      <a href="../../index.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SCROLLABLE RIGHT CONTENT AREA -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles" id="headerTitles">
+        <h1>Review Workspace</h1>
+        <p>Detailed submission review and decision making.</p>
+      </div>
+
+      <div class="header-actions">
+        <div class="rule-version-pill">
+          <i class="fa-solid fa-book-open"></i> OIML R-76 v2006.1
+        </div>
+        <button class="notification-btn" aria-label="Notifications" onclick="window.location.href='notifications.html'">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge"></span>
+        </button>
+        <div class="datetime-pill">
+          <i class="fa-regular fa-calendar"></i>
+          <div>
+            <span class="date-str" id="currentDate">02 Oct 2026</span>
+            <span class="login-str">Last login: 08:15 AM</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Scrollable Main Viewport -->
+    <main class="dashboard-content" id="mainContent">
+<div class="workspace-header card">
+          <div class="workspace-title-row">
+            <div>
+              <div class="workspace-id">Application: <strong id="wsAppNo">APP-2026-081</strong> <span class="badge badge-awaiting" id="wsStatus">Ready for Review</span></div>
+              <h2 id="wsModelName">Precision Instruments PI-500</h2>
+              <p class="workspace-meta">Submitted by <span id="wsTech">Jane Smith</span> on <span id="wsDate">01 Oct 2026</span></p>
+            </div>
+            <div class="workspace-actions">
+              <button class="btn-outline text-red" onclick="confirmAction('return')"><i class="fa-solid fa-rotate-left"></i> Request Correction</button>
+              <button class="btn-primary" onclick="openWorkspaceTab('approval')"><i class="fa-solid fa-clipboard-check"></i> Final Decision</button>
+            </div>
+          </div>
+          
+          <div class="workspace-tabs">
+            <button class="ws-tab active" data-tab="overview">Overview</button>
+            <button class="ws-tab" data-tab="instrument">Instrument & Nameplate <span class="tab-badge warning">1</span></button>
+            <button class="ws-tab" data-tab="observations">Test Observations</button>
+            <button class="ws-tab" data-tab="compliance">Compliance & MPE</button>
+            <button class="ws-tab" data-tab="anomaly">Anomaly Sentinel <span class="tab-badge danger">1</span></button>
+            <button class="ws-tab" data-tab="evidence">Evidence</button>
+            <button class="ws-tab" data-tab="trace">Compliance Trace</button>
+            <button class="ws-tab" data-tab="approval">Review & Approval</button>
+          </div>
+        </div>
+
+        <div class="workspace-content">
+          
+          <!-- TAB: OVERVIEW -->
+          <div id="tab-overview" class="ws-tab-content active">
+            <div class="overview-grid">
+              <div class="card">
+                <h3>Instrument Summary</h3>
+                <table class="detail-table">
+                  <tr><td>Manufacturer</td><td>Precision Instruments Ltd</td></tr>
+                  <tr><td>Model / Type</td><td>PI-500 (Non-automatic Weighing Instrument)</td></tr>
+                  <tr><td>Accuracy Class</td><td>III</td></tr>
+                  <tr><td>Max Capacity</td><td>500 kg</td></tr>
+                  <tr><td>Min Capacity</td><td>4 kg</td></tr>
+                  <tr><td>Verification interval (e)</td><td>100 g</td></tr>
+                  <tr><td>Actual interval (d)</td><td>10 g</td></tr>
+                </table>
+              </div>
+              
+              <div class="card">
+                <h3>Evaluation Summary</h3>
+                <div class="eval-summary-stats">
+                  <div class="stat-box">
+                    <span class="stat-num">12/12</span>
+                    <span class="stat-label">Tests Completed</span>
+                  </div>
+                  <div class="stat-box success">
+                    <span class="stat-num">11</span>
+                    <span class="stat-label">Passed</span>
+                  </div>
+                  <div class="stat-box danger">
+                    <span class="stat-num">1</span>
+                    <span class="stat-label">Failed</span>
+                  </div>
+                </div>
+                <div class="eval-flags mt-3">
+                  <div class="flag-item"><i class="fa-solid fa-triangle-exclamation text-amber"></i> 1 OCR Mismatch detected</div>
+                  <div class="flag-item"><i class="fa-solid fa-robot text-purple"></i> 1 Anomaly Alert</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <h3>Test Completion Matrix</h3>
+              <div class="test-matrix">
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Weighing Performance</div>
+                <div class="test-matrix-item fail"><i class="fa-solid fa-xmark"></i> Eccentricity</div>
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Discrimination</div>
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Repeatability</div>
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Zero Return</div>
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Tare</div>
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Temperature Effect</div>
+                <div class="test-matrix-item pass"><i class="fa-solid fa-check"></i> Creep</div>
+                <div class="test-matrix-item na">Not Applicable: Voltage Variations</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: INSTRUMENT VERIFICATION -->
+          <div id="tab-instrument" class="ws-tab-content">
+            <div class="instrument-verif-layout">
+              <div class="card">
+                <h3>Nameplate Photograph</h3>
+                <div class="image-preview-container">
+                  <img src="https://placehold.co/600x400/eeeeee/333333?text=Nameplate+Photo" alt="Nameplate" class="nameplate-img" />
+                  <div class="image-controls">
+                    <button><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button><i class="fa-solid fa-expand"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <h3>OCR Validation Comparison</h3>
+                <p class="text-muted mb-2">Compare manual technician entries with AI-extracted nameplate data.</p>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Field</th>
+                      <th>Manual Entry</th>
+                      <th>OCR Extracted</th>
+                      <th>Match Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Manufacturer</td><td>Precision Instruments</td><td>Precision Instruments</td><td><span class="badge badge-pass">Match</span></td>
+                    </tr>
+                    <tr>
+                      <td>Model</td><td>PI-500</td><td>PI-500</td><td><span class="badge badge-pass">Match</span></td>
+                    </tr>
+                    <tr class="mismatch-row">
+                      <td>Max Capacity</td><td><strong>500 kg</strong></td><td><strong class="text-red">600 kg</strong></td>
+                      <td>
+                        <span class="badge badge-fail">Mismatch</span>
+                        <button class="btn-action-small ml-2" onclick="alert('Open resolve mismatch modal')">Review</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Accuracy Class</td><td>III</td><td>III</td><td><span class="badge badge-pass">Match</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: TEST OBSERVATIONS -->
+          <div id="tab-observations" class="ws-tab-content">
+            <div class="sidebar-layout">
+              <div class="inner-sidebar card p-0">
+                <ul class="test-list">
+                  <li class="pass">Weighing Performance</li>
+                  <li class="active fail">Eccentricity</li>
+                  <li class="pass">Repeatability</li>
+                  <li class="pass">Tare</li>
+                  <li class="pass">Temperature Effect</li>
+                </ul>
+              </div>
+              <div class="inner-content card">
+                <div class="d-flex justify-between align-center mb-3">
+                  <h3>Eccentricity Test Observations</h3>
+                  <div class="env-data">
+                    <span>Temp: 22.4°C</span> | <span>Hum: 45%</span> | <span>Pres: 1012 hPa</span>
+                  </div>
+                </div>
+                
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Position</th>
+                      <th>Applied Load (L)</th>
+                      <th>Indication (I)</th>
+                      <th>Add. Load (ΔL)</th>
+                      <th>Error (E)</th>
+                      <th>MPE</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Center</td><td>150 kg</td><td>150.00 kg</td><td>0.01 kg</td><td>-0.01 kg</td><td>±0.1 kg</td><td><span class="text-green font-bold">PASS</span></td></tr>
+                    <tr class="bg-red-light"><td>Front Left</td><td>150 kg</td><td>149.90 kg</td><td>0.02 kg</td><td>-0.12 kg</td><td>±0.1 kg</td><td><span class="text-red font-bold">FAIL</span></td></tr>
+                    <tr><td>Back Left</td><td>150 kg</td><td>149.95 kg</td><td>0.01 kg</td><td>-0.06 kg</td><td>±0.1 kg</td><td><span class="text-green font-bold">PASS</span></td></tr>
+                    <tr class="bg-red-light"><td>Back Right</td><td>150 kg</td><td>150.15 kg</td><td>0.00 kg</td><td>0.15 kg</td><td>±0.1 kg</td><td><span class="text-red font-bold">FAIL</span></td></tr>
+                    <tr><td>Front Right</td><td>150 kg</td><td>150.00 kg</td><td>0.01 kg</td><td>-0.01 kg</td><td>±0.1 kg</td><td><span class="text-green font-bold">PASS</span></td></tr>
+                  </tbody>
+                </table>
+                <div class="tech-remarks mt-3 p-3 bg-canvas rounded">
+                  <strong>Technician Remarks:</strong> Instrument leveling was checked prior to test. The load cell on the right side appears slightly misaligned.
+                </div>
+                <div class="mt-3 text-right">
+                  <button class="btn-outline"><i class="fa-regular fa-comment"></i> Add Evaluator Comment</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: COMPLIANCE & MPE -->
+          <div id="tab-compliance" class="ws-tab-content">
+            <div class="card mb-3 text-center" style="background: var(--color-red-light); border-color: var(--color-red);">
+              <h2 class="text-red" style="font-size: 2rem;">COMPLIANCE FAIL</h2>
+              <p>OIML R-76 Deterministic Rules Engine Decision</p>
+              <p class="text-muted text-sm mt-1">Rule Package: OIML R-76 v2006.1 | Engine: v2.4.1 | Timestamp: 01 Oct 2026 14:32</p>
+            </div>
+            
+            <div class="card">
+              <h3>Test-wise Compliance Summary</h3>
+              <table class="data-table mt-2">
+                <thead>
+                  <tr>
+                    <th>Test</th>
+                    <th>Worst Case Error</th>
+                    <th>Applicable MPE</th>
+                    <th>Margin</th>
+                    <th>Result</th>
+                    <th>Trace</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Weighing Performance</td>
+                    <td>0.08 kg</td>
+                    <td>±0.15 kg</td>
+                    <td>0.07 kg</td>
+                    <td><span class="badge badge-pass">PASS</span></td>
+                    <td><button class="btn-action-small" onclick="openWorkspaceTab('trace')">View Trace</button></td>
+                  </tr>
+                  <tr class="bg-red-light">
+                    <td>Eccentricity</td>
+                    <td>0.15 kg</td>
+                    <td>±0.10 kg</td>
+                    <td>-0.05 kg</td>
+                    <td><span class="badge badge-fail">FAIL</span></td>
+                    <td><button class="btn-action-small" onclick="openWorkspaceTab('trace')">View Trace</button></td>
+                  </tr>
+                  <tr>
+                    <td>Repeatability</td>
+                    <td>0.04 kg</td>
+                    <td>±0.10 kg</td>
+                    <td>0.06 kg</td>
+                    <td><span class="badge badge-pass">PASS</span></td>
+                    <td><button class="btn-action-small" onclick="openWorkspaceTab('trace')">View Trace</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB: ANOMALY SENTINEL -->
+          <div id="tab-anomaly" class="ws-tab-content">
+            <div class="card mb-3 ai-disclaimer">
+              <i class="fa-solid fa-circle-info"></i> AI assistance supports explanation and anomaly interpretation. AI does not determine final compliance.
+            </div>
+            
+            <div class="anomaly-card card border-red">
+              <div class="anomaly-header d-flex justify-between align-center mb-2">
+                <div>
+                  <span class="badge badge-fail">High Priority</span>
+                  <h3 class="mt-1">Non-linear Error Progression in Eccentricity</h3>
+                </div>
+                <div class="badge bg-amber text-white">Unresolved</div>
+              </div>
+              <div class="anomaly-body grid-2-col mt-3 gap-3">
+                <div>
+                  <p><strong>Test:</strong> Eccentricity</p>
+                  <p><strong>Detected Pattern:</strong> The error vector across the four corners shows an unusual diagonal tilt (-0.12 kg front-left to +0.15 kg back-right).</p>
+                  <p class="mt-2"><strong>Possible Causes:</strong> 
+                    <ul class="ml-4 mt-1 text-muted text-sm">
+                      <li>Uneven floor/bench surface during testing.</li>
+                      <li>Mechanical binding in the load cell mounting.</li>
+                      <li>Debris under the weighing pan.</li>
+                    </ul>
+                  </p>
+                </div>
+                <div class="ai-explanation p-3 rounded" style="background:var(--color-purple-light); border:1px solid #ddd6fe">
+                  <h4 style="color:var(--color-purple)"><i class="fa-solid fa-robot"></i> AI Analysis</h4>
+                  <p class="text-sm mt-1">Historically, 85% of PI-500 models showing this exact corner error pattern were later found to have shipping screws partially engaged or pan-support debris. Recommend verifying test setup photographs.</p>
+                </div>
+              </div>
+              <div class="anomaly-actions mt-3 pt-3 border-t">
+                <button class="btn-outline"><i class="fa-solid fa-check"></i> Mark as Explained</button>
+                <button class="btn-outline text-red"><i class="fa-solid fa-rotate-left"></i> Request Retest</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: EVIDENCE -->
+          <div id="tab-evidence" class="ws-tab-content">
+            <div class="grid-2-col gap-3">
+              <div class="card">
+                <h3>Evidence Checklist</h3>
+                <ul class="checklist mt-2 text-sm">
+                  <li class="checked"><i class="fa-solid fa-check-circle text-green mr-2"></i> Instrument nameplate photograph</li>
+                  <li class="checked"><i class="fa-solid fa-check-circle text-green mr-2"></i> Overall instrument photograph</li>
+                  <li class="warning text-red"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Eccentricity test setup photograph (Missing)</li>
+                  <li class="checked"><i class="fa-solid fa-check-circle text-green mr-2"></i> Manufacturer specifications PDF</li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3>Uploaded Documents</h3>
+                <div class="doc-list mt-2">
+                  <div class="doc-item d-flex justify-between align-center p-2 border-b">
+                    <div class="d-flex align-center gap-2">
+                      <i class="fa-solid fa-file-pdf text-red text-xl"></i>
+                      <div class="doc-info lh-tight">
+                        <strong>PI-500_Specs.pdf</strong><br>
+                        <span class="text-xs text-muted">Uploaded by Jane Smith | 01 Oct 10:15</span>
+                      </div>
+                    </div>
+                    <button class="btn-action-small">View</button>
+                  </div>
+                  <div class="doc-item d-flex justify-between align-center p-2 border-b">
+                    <div class="d-flex align-center gap-2">
+                      <i class="fa-solid fa-image text-blue text-xl"></i>
+                      <div class="doc-info lh-tight">
+                        <strong>IMG_Setup_01.jpg</strong><br>
+                        <span class="text-xs text-muted">Uploaded by Jane Smith | 01 Oct 10:20</span>
+                      </div>
+                    </div>
+                    <button class="btn-action-small">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Instrument Photographs Section -->
+            <div class="card mt-3">
+              <div class="d-flex justify-between align-center mb-3">
+                <div>
+                  <h3>Instrument Photographs</h3>
+                  <p class="text-muted text-sm mt-1">Front view, Side view, Nameplate, Identification plate & test setups.</p>
+                </div>
+                <button class="btn-outline text-sm"><i class="fa-solid fa-download"></i> Download All</button>
+              </div>
+              
+              <!-- 4 Explicit Static Image Cards -->
+              <div class="photo-grid" id="evidence-photos-container">
+                
+                <!-- Front View Card -->
+                <div class="photo-card">
+                  <div class="photo-card-img-wrapper">
+                    <!-- EDIT THIS SRC ATTRIBUTE WITH YOUR IMAGE LINK -->
+                    <img src="../../img/Front-view.jpeg" alt="Front View" class="photo-card-img" />
+                    <!-- Functional Zoom Button -->
+                    <button class="photo-action-btn" title="View Fullscreen" onclick="openFullscreenImage(this)"><i class="fa-solid fa-expand"></i></button>
+                  </div>
+                  <div class="photo-card-body">
+                    <div class="photo-card-title">Front View</div>
+                    <div class="photo-card-meta">
+                      <span><i class="fa-regular fa-image mr-1"></i>1.2 MB</span>
+                      <span class="text-green"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Side View Card -->
+                <div class="photo-card">
+                  <div class="photo-card-img-wrapper">
+                    <!-- EDIT THIS SRC ATTRIBUTE WITH YOUR IMAGE LINK -->
+                    <img src="../../img/side-view.jpeg" alt="Side View" class="photo-card-img" />
+                    <!-- Functional Zoom Button -->
+                    <button class="photo-action-btn" title="View Fullscreen" onclick="openFullscreenImage(this)"><i class="fa-solid fa-expand"></i></button>
+                  </div>
+                  <div class="photo-card-body">
+                    <div class="photo-card-title">Side View</div>
+                    <div class="photo-card-meta">
+                      <span><i class="fa-regular fa-image mr-1"></i>1.5 MB</span>
+                      <span class="text-green"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Nameplate Card -->
+                <div class="photo-card">
+                  <div class="photo-card-img-wrapper">
+                    <!-- EDIT THIS SRC ATTRIBUTE WITH YOUR IMAGE LINK -->
+                    <img src="../../img/Name-plate.jpeg" alt="Nameplate" class="photo-card-img" />
+                    <!-- Functional Zoom Button -->
+                    <button class="photo-action-btn" title="View Fullscreen" onclick="openFullscreenImage(this)"><i class="fa-solid fa-expand"></i></button>
+                  </div>
+                  <div class="photo-card-body">
+                    <div class="photo-card-title">Nameplate</div>
+                    <div class="photo-card-meta">
+                      <span><i class="fa-regular fa-image mr-1"></i>850 KB</span>
+                      <span class="text-green"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Identification Plate Card -->
+                <div class="photo-card">
+                  <div class="photo-card-img-wrapper">
+                    <!-- EDIT THIS SRC ATTRIBUTE WITH YOUR IMAGE LINK -->
+                    <img src="../../img/Identification-plate.jpeg" alt="Identification Plate" class="photo-card-img" />
+                    <!-- Functional Zoom Button -->
+                    <button class="photo-action-btn" title="View Fullscreen" onclick="openFullscreenImage(this)"><i class="fa-solid fa-expand"></i></button>
+                  </div>
+                  <div class="photo-card-body">
+                    <div class="photo-card-title">Identification Plate</div>
+                    <div class="photo-card-meta">
+                      <span><i class="fa-regular fa-image mr-1"></i>920 KB</span>
+                      <span class="text-green"><i class="fa-solid fa-circle-check mr-1"></i>Verified</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <!-- TAB: TRACE -->
+          <div id="tab-trace" class="ws-tab-content">
+             <div class="card">
+               <h3>Explainable Compliance Trace: Eccentricity Test (Back Right)</h3>
+               <div class="trace-flow mt-4 px-3">
+                 <div class="trace-step d-flex gap-3 mb-4">
+                   <div class="trace-icon bg-blue-light text-blue rounded-full p-2 d-flex align-center justify-center" style="width:40px; height:40px;"><i class="fa-solid fa-database"></i></div>
+                   <div class="trace-detail flex-1 pb-3 border-b">
+                     <strong class="block mb-1">1. Input Data</strong>
+                     <span class="text-sm text-muted">Max = 500kg, e = 100g, Class = III, Load = 150kg, Indication = 150.15kg</span>
+                   </div>
+                 </div>
+                 <div class="trace-step d-flex gap-3 mb-4">
+                   <div class="trace-icon bg-blue-light text-blue rounded-full p-2 d-flex align-center justify-center" style="width:40px; height:40px;"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                   <div class="trace-detail flex-1 pb-3 border-b">
+                     <strong class="block mb-1">2. Calculation</strong>
+                     <span class="text-sm text-muted">Error (E) = Indication - Load = 150.15 - 150.00 = 0.15 kg</span>
+                   </div>
+                 </div>
+                 <div class="trace-step d-flex gap-3 mb-4">
+                   <div class="trace-icon bg-blue-light text-blue rounded-full p-2 d-flex align-center justify-center" style="width:40px; height:40px;"><i class="fa-solid fa-book-open"></i></div>
+                   <div class="trace-detail flex-1 pb-3 border-b">
+                     <strong class="block mb-1">3. Applicable Rule (MPE)</strong>
+                     <span class="text-sm text-muted">OIML R-76 Table 6: Class III, Load 1500e. MPE = ±1.0e = ±100g (0.10 kg)</span>
+                   </div>
+                 </div>
+                 <div class="trace-step d-flex gap-3 mb-4">
+                   <div class="trace-icon bg-blue-light text-blue rounded-full p-2 d-flex align-center justify-center" style="width:40px; height:40px;"><i class="fa-solid fa-code-compare"></i></div>
+                   <div class="trace-detail flex-1 pb-3 border-b">
+                     <strong class="block mb-1">4. Comparison</strong>
+                     <span class="text-sm text-muted">|E| (0.15 kg) > MPE (0.10 kg)</span>
+                   </div>
+                 </div>
+                 <div class="trace-step d-flex gap-3">
+                   <div class="trace-icon bg-red-light text-red rounded-full p-2 d-flex align-center justify-center" style="width:40px; height:40px;"><i class="fa-solid fa-xmark"></i></div>
+                   <div class="trace-detail flex-1 pb-3">
+                     <strong class="block mb-1">5. Final Result</strong>
+                     <span class="text-red font-bold">FAIL</span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+          </div>
+
+          <!-- TAB: REVIEW & APPROVAL -->
+          <div id="tab-approval" class="ws-tab-content">
+            <div class="grid-2-col gap-3">
+              <div class="card">
+                <h3>Review Readiness Checklist</h3>
+                <ul class="checklist mt-3 text-sm">
+                  <li class="checked text-green mb-2"><i class="fa-solid fa-check mr-2"></i> Instrument details verified</li>
+                  <li class="checked text-green mb-2"><i class="fa-solid fa-check mr-2"></i> Observations validated</li>
+                  <li class="checked text-green mb-2"><i class="fa-solid fa-check mr-2"></i> MPE calculations completed</li>
+                  <li class="warning text-red mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i> 1 OCR Mismatch unresolved</li>
+                  <li class="warning text-red mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i> 1 Anomaly unresolved</li>
+                  <li class="warning text-red mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i> 1 Missing Evidence</li>
+                </ul>
+                <div class="mt-4 p-3 rounded bg-red-light border-red">
+                  <strong class="text-red text-lg">Overall Result: FAIL</strong>
+                  <p class="text-sm mt-1">This instrument has failed the OIML R-76 deterministic compliance checks.</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3>Evaluator Decision</h3>
+                <div class="mt-3">
+                  <label class="font-bold text-sm block mb-1">Evaluator Remarks (Required for Rejection/Correction)</label>
+                  <textarea class="form-textarea w-100 p-2 border rounded" rows="5" placeholder="Enter detailed remarks regarding failures, anomalies, or missing evidence..."></textarea>
+                </div>
+                <div class="decision-buttons mt-4 d-flex gap-2">
+                  <button class="btn-primary flex-1 opacity-50 cursor-not-allowed" style="background:#10b981" disabled title="Cannot approve a failed test"><i class="fa-solid fa-check-double"></i> Approve Report</button>
+                  <button class="btn-primary flex-1" style="background:#f59e0b" onclick="confirmAction('return')"><i class="fa-solid fa-rotate-left"></i> Return for Correction</button>
+                  <button class="btn-primary flex-1" style="background:#dc2626" onclick="confirmAction('reject')"><i class="fa-solid fa-ban"></i> Reject Submission</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+    </main>
+  </div>
+  
+  <!-- Right R-76 Assistant Panel -->
+  <div class="chatbot-panel" id="assistantPanel" hidden>
+    <div class="chatbot-panel-header">
+      <div class="chatbot-panel-title">
+        <i class="fa-solid fa-robot"></i> R-76 Knowledge Assistant
+      </div>
+      <div class="chatbot-panel-actions">
+        <button id="closeAssistantBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="chatbot-panel-messages" id="chatbotMessages">
+      <div class="chatbot-message bot">
+        Hello Evaluator. I am the OIML R-76 Knowledge Assistant. I can help explain compliance calculations, interpret anomalies, and quote procedure guidelines. I cannot modify the authoritative compliance decisions.
+      </div>
+      <div class="chatbot-message user">
+        Why did the Eccentricity test fail for APP-2026-081?
+      </div>
+      <div class="chatbot-message bot">
+        The eccentricity test failed because the calculated error at the Back Right position (0.15 kg) exceeded the Maximum Permissible Error (MPE) of ±0.10 kg for a Class III instrument at 1500e load.
+        <span class="chatbot-source">Source: OIML R-76-1 (2006) Section 3.6.2</span>
+      </div>
+    </div>
+    <div class="chatbot-compose">
+      <textarea id="assistantInput" placeholder="Ask a technical question..."></textarea>
+      <button onclick="sendAssistantMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- Fullscreen Image Modal Overlay -->
+  <div class="image-modal-overlay" id="imageModal" style="display:none;" onclick="closeImageModal()">
+    <button class="image-modal-close" onclick="closeImageModal()"><i class="fa-solid fa-xmark"></i></button>
+    <img src="" id="fullSizeImage" class="image-modal-img" alt="Fullscreen View" onclick="event.stopPropagation()">
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="confirmModal" style="display:none;">
+    <div class="modal card">
+      <h3 id="modalTitle">Confirm Action</h3>
+      <p id="modalBody" class="mt-2 text-muted">Are you sure you want to perform this action?</p>
+      <div class="mt-4 text-right">
+        <button class="btn-outline mr-2" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" id="modalConfirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../NAWI_user/js/qa-assistant.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="../js/review-workspace.js"></script>
+</body>
+</html>

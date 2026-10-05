@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Role — NAWI System</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/homepage.css" />
+</head>
+<body>
+
+  <div class="landing-wrapper">
+    
+    <!-- Central Split Card -->
+    <div class="auth-card">
+      
+      <!-- Left Side: Logo & Branding -->
+      <div class="auth-left">
+        <div class="brand-showcase">
+          <div class="brand-logo">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </div>
+          <h1>NAWI System</h1>
+          <p class="brand-subtitle">OIML R-76 Compliance & Legal Metrology Management</p>
+        </div>
+        
+        <div class="auth-illustration">
+          <i class="fa-solid fa-shield-halved"></i>
+          <p>Secure, transparent, and standardized instrument evaluation platform.</p>
+        </div>
+      </div>
+
+      <!-- Right Side: Role Selection -->
+      <div class="auth-right">
+        <div class="auth-header">
+          <h2>Select Your Role</h2>
+          <p>Choose your designated portal to continue to the dashboard.</p>
+        </div>
+
+        <div class="role-grid">
+          
+          <!-- Role 1: System Admin -->
+          <a href="../NAWI_ Administrator/NAWI_Administrator/index.html" class="role-btn" style="text-decoration: none;">
+            <div class="role-icon bg-blue-light text-blue">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div class="role-text">
+              <h3>System Administrator</h3>
+              <p>Manage users, labs, and system configurations.</p>
+            </div>
+            <div class="role-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Role 2: Evaluator (Officer) -> Routes to index.html -->
+          <a href="../Metrology Evaluator/pages/dashboard.html" class="role-btn" style="text-decoration: none;">
+            <div class="role-icon bg-green-light text-green">
+              <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <div class="role-text">
+              <h3>Testing Officer / Evaluator</h3>
+              <p>Perform OIML R-76 tests and generate test reports.</p>
+            </div>
+            <div class="role-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Role 3: User / Tester (Applicant) -->
+          <a href="./NAWI_user/index.html" class="role-btn" style="text-decoration: none;">
+            <div class="role-icon bg-purple-light text-purple">
+              <i class="fa-solid fa-building-user"></i>
+            </div>
+            <div class="role-text">
+              <h3>Lab Assistant / Applicant</h3>
+              <p>Submit instruments and track evaluation progress.</p>
+            </div>
+            <div class="role-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+        </div>
+        
+        <div class="auth-footer">
+          <p><i class="fa-solid fa-lock"></i> Protected by Gov. Security Protocols</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="./js/homepage.js"></script>
+</body>
+</html>

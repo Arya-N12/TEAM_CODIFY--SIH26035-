@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Information — NAWI OIML R-76</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/personal-info.css" />
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+      <div class="brand-text">
+        <h2>NAWI System</h2>
+        <span>OIML R-76 Evaluation</span>
+      </div>
+    </div>
+    
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Overview</span></a>
+      <a href="../pages/new-test.html" class="nav-item"><i class="fa-solid fa-circle-plus"></i><span>New Test</span></a>
+      <a href="../pages/my-tests.html" class="nav-item"><i class="fa-solid fa-table-cells-large"></i><span>My Tests</span></a>
+      <a href="../pages/test-evaluation.html" class="nav-item"><i class="fa-solid fa-clipboard-check"></i><span>Test Evaluation</span></a>
+      <a href="../pages/Report.html" class="nav-item"><i class="fa-regular fa-file-lines"></i><span>Reports</span></a>
+      <a href="../pages/instrment-repo.html" class="nav-item"><i class="fa-solid fa-database"></i><span>Instrument Repository</span></a>
+      
+      <div class="nav-divider"></div>
+      
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+      
+      <a href="../pages/personal-info.html" class="nav-item active"><i class="fa-regular fa-user"></i><span>Profile & Account</span></a>
+      <a href="../../index.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>Personal Information</h1>
+        <p>Manage your profile, professional details and account information.</p>
+      </div>
+      <div class="header-actions" id="topActionContainer">
+        <button type="button" class="btn-primary" id="topBtnEdit">
+          <i class="fa-solid fa-pen"></i> Edit Profile
+        </button>
+        <button type="button" class="btn-secondary hidden" id="topBtnCancel">Cancel</button>
+        <button type="button" class="btn-primary btn-save hidden" id="topBtnSave">
+          <i class="fa-solid fa-check"></i> Save Changes
+        </button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      
+      <form id="profileForm" novalidate onsubmit="return false;">
+        
+        <!-- Profile Header Card -->
+        <section class="modern-card profile-header-card mb-4">
+          <div class="profile-header-content">
+            <div class="profile-avatar-lg">
+              <span>AS</span>
+              <button type="button" class="avatar-edit-btn" title="Change Photo"><i class="fa-solid fa-camera"></i></button>
+            </div>
+            <div class="profile-primary-info">
+              <h2 id="displayName">Dr. Ananya Sharma</h2>
+              <div class="profile-subtitle" id="displayDesignation">Test Officer</div>
+              <div class="profile-meta-list mt-2">
+                <span class="meta-item"><i class="fa-solid fa-id-badge text-subtle"></i> Officer ID: <strong>LM-TO-0247</strong> <i class="fa-solid fa-lock lock-icon" title="Managed by Administrator"></i></span>
+                <span class="meta-item"><i class="fa-solid fa-flask text-subtle"></i> Regional Legal Metrology Laboratory</span>
+                <span class="meta-item"><i class="fa-solid fa-location-dot text-subtle"></i> <span id="displayLocation">Pune, Maharashtra</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-header-actions" id="cardActionContainer">
+            <button type="button" class="btn-secondary" id="btnChangePhoto"><i class="fa-solid fa-camera"></i> Change Photo</button>
+            <button type="button" class="btn-secondary" id="cardBtnEdit"><i class="fa-solid fa-pen"></i> Edit Profile</button>
+          </div>
+        </section>
+
+        <!-- Personal & Contact Details Grid -->
+        <div class="grid-2 mb-4">
+          
+          <!-- Personal Details -->
+          <section class="modern-card p-4">
+            <div class="card-header-sm mb-4">
+              <h3><i class="fa-regular fa-id-card"></i> Personal Details</h3>
+            </div>
+            <div class="detail-list">
+              <div class="detail-row">
+                <label class="detail-label" for="inpFullName">Full Name <span class="req-star">*</span></label>
+                <div class="detail-control">
+                  <input type="text" id="inpFullName" class="inline-input editable-field" value="Dr. Ananya Sharma" required minlength="3">
+                  <span class="error-msg">Please enter a valid full name.</span>
+                </div>
+              </div>
+              <div class="detail-row">
+                <label class="detail-label">Officer ID</label>
+                <div class="detail-control">
+                  <div class="locked-text">LM-TO-0247 <i class="fa-solid fa-lock" title="Managed by Administrator"></i></div>
+                </div>
+              </div>
+              <div class="detail-row">
+                <label class="detail-label" for="inpDesignation">Designation <span class="req-star">*</span></label>
+                <div class="detail-control">
+                  <input type="text" id="inpDesignation" class="inline-input editable-field" value="Test Officer" required>
+                  <span class="error-msg">Designation is required.</span>
+                </div>
+              </div>
+              <div class="detail-row">
+                <label class="detail-label">Department</label>
+                <div class="detail-control">
+                  <div class="locked-text">Legal Metrology <i class="fa-solid fa-lock" title="Managed by Administrator"></i></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contact Information -->
+          <section class="modern-card p-4">
+            <div class="card-header-sm mb-4">
+              <h3><i class="fa-regular fa-address-book"></i> Contact Information</h3>
+            </div>
+            <div class="detail-list">
+              <div class="detail-row">
+                <label class="detail-label">Official Email</label>
+                <div class="detail-control">
+                  <div class="locked-text">ananya.sharma@gov.in <i class="fa-solid fa-lock" title="Managed by Administrator"></i></div>
+                </div>
+              </div>
+              <div class="detail-row">
+                <label class="detail-label">Phone Number</label>
+                <div class="detail-control">
+                  <div class="locked-text">+91 98450 11223 <i class="fa-solid fa-lock" title="Managed by Administrator"></i></div>
+                </div>
+              </div>
+              <div class="detail-row">
+                <label class="detail-label" for="inpExtension">Office Extension</label>
+                <div class="detail-control">
+                  <input type="text" id="inpExtension" class="inline-input editable-field" value="214" pattern="[0-9]{3,5}">
+                  <span class="error-msg">Must be a 3-5 digit number.</span>
+                </div>
+              </div>
+              <div class="detail-row">
+                <label class="detail-label" for="inpLocation">Office Location <span class="req-star">*</span></label>
+                <div class="detail-control">
+                  <input type="text" id="inpLocation" class="inline-input editable-field" value="Pune, Maharashtra" required>
+                  <span class="error-msg">Office location is required.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Professional & Laboratory Information -->
+        <section class="modern-card p-4 mb-4">
+          <div class="card-header-sm mb-4">
+            <h3><i class="fa-solid fa-building-user"></i> Professional & Laboratory Information</h3>
+          </div>
+          <div class="detail-list professional-list">
+            
+            <div class="detail-row">
+              <label class="detail-label">Laboratory</label>
+              <div class="detail-control">
+                <div class="locked-text">Regional Legal Metrology Laboratory <i class="fa-solid fa-lock"></i></div>
+              </div>
+            </div>
+            
+            <div class="detail-row">
+              <label class="detail-label">Laboratory Code</label>
+              <div class="detail-control">
+                <div class="locked-text font-mono">RLML-PN-04 <i class="fa-solid fa-lock"></i></div>
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <label class="detail-label" for="inpSection">Section / Unit <span class="req-star">*</span></label>
+              <div class="detail-control">
+                <input type="text" id="inpSection" class="inline-input editable-field" value="NAWI Testing Division" required>
+                <span class="error-msg">Section/Unit is required.</span>
+              </div>
+            </div>
+            
+            <div class="detail-row">
+              <label class="detail-label">Assigned Region</label>
+              <div class="detail-control">
+                <div class="locked-text">Maharashtra <i class="fa-solid fa-lock"></i></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </form>
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toastMsg"><i class="fa-solid fa-circle-check"></i> Profile information updated successfully.</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/personal-info.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* Specific styles for notifications */
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+/* Individual Notification Card */
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  text-align: left;
+}
+
+.alert-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Category Alert Borders */
+.alert-item.ocr-alert     { border-left: 4px solid #f59e0b; }
+.alert-item.anomaly-alert { border-left: 4px solid #8b5cf6; }
+.alert-item.missing-alert { border-left: 4px solid #ef4444; }
+.alert-item.info-alert    { border-left: 4px solid #3b82f6; }
+
+/* Icon Wrapper */
+.alert-icon-wrapper {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-size: 1.25rem;
+}
+
+/* Category Icon Theming */
+.ocr-alert .alert-icon-wrapper     { background-color: #fffbeb; color: #f59e0b; }
+.anomaly-alert .alert-icon-wrapper { background-color: #f5f3ff; color: #8b5cf6; }
+.missing-alert .alert-icon-wrapper { background-color: #fef2f2; color: #ef4444; }
+.info-alert .alert-icon-wrapper    { background-color: #eff6ff; color: #3b82f6; }
+
+/* Content Area */
+.alert-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.alert-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #0f172a;
+  margin: 0;
+}
+
+.alert-time {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alert-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Application ID Badge */
+.app-id-badge {
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.alert-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Ensure the parent card header remains properly aligned */
+.alerts-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .alert-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .alert-body {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .alert-item {
+    padding: 16px;
+  }
+  
+  .alert-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    margin-right: 16px;
+  }
+}

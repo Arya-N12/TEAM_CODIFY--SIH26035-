@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Tests — NAWI OIML R-76 Test Management</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="../css/my-tests.css" />
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR (No Scrollbar, Personal Info After Report Repository) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-scale-balanced"></i>
+      </div>
+      <div class="brand-text">
+        <h2>NAWI Test Management</h2>
+        <span>OIML R-76 Compliance System</span>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Overview</span>
+      </a>
+      <a href="../pages/new-test.html" class="nav-item">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>New Test</span>
+      </a>
+      <a href="../pages/my-tests.html" class="nav-item active">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <span>My Tests</span>
+      </a>
+      <a href="../pages/test-evaluation.html" class="nav-item">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Test Evaluation</span>
+      </a>
+      <a href="../pages/Report.html" class="nav-item">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Reports</span>
+      </a>
+      <a href="../pages/instrment-repo.html" class="nav-item">
+        <i class="fa-solid fa-database"></i>
+        <span>Instrument Repository</span>
+      </a>
+
+      <!-- Personal Info Placed Directly After Report Repository -->
+      <div class="nav-divider"></div>
+      <div class="personal-info-card">
+        <div class="user-avatar-small">AS</div>
+        <div class="user-meta">
+          <strong>Dr. Ananya Sharma</strong>
+          <span>Lead Testing Officer</span>
+        </div>
+      </div>
+
+      <a href="../pages/my-tests.html" class="nav-item">
+        <i class="fa-regular fa-user"></i>
+        <span>Profile &amp; Account</span>
+      </a>
+      <a href="../../index.html" class="nav-item logout-link">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN SCROLLABLE VIEWPORT -->
+  <div class="main-wrapper">
+    <!-- Top Header Bar -->
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>My Tests</h1>
+        <p>Manage, track, and continue all NAWI tests assigned or created by you.</p>
+      </div>
+
+      <div class="header-actions">
+        <a href="new-test.html" class="btn-primary">
+          <i class="fa-solid fa-plus"></i> New Test
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="dashboard-content">
+      
+      <!-- 1. Summary Cards -->
+      <section class="kpi-grid">
+        <article class="kpi-card" data-filter="all">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-blue"><i class="fa-solid fa-list-check"></i></span>
+            <span class="kpi-label">All Tests</span>
+          </div>
+          <div class="kpi-value" id="countAll">124</div>
+          <div class="kpi-subtext">Total tests</div>
+        </article>
+
+        <article class="kpi-card" data-filter="Draft">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-slate"><i class="fa-regular fa-file-lines"></i></span>
+            <span class="kpi-label">Draft</span>
+          </div>
+          <div class="kpi-value" id="countDraft">8</div>
+          <div class="kpi-subtext">Not yet started</div>
+        </article>
+
+        <article class="kpi-card" data-filter="In Progress">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-cyan"><i class="fa-regular fa-clock"></i></span>
+            <span class="kpi-label">In Progress</span>
+          </div>
+          <div class="kpi-value" id="countInProgress">12</div>
+          <div class="kpi-subtext">Active evaluations</div>
+        </article>
+
+        <article class="kpi-card" data-filter="Awaiting Review">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-amber"><i class="fa-solid fa-hourglass-half"></i></span>
+            <span class="kpi-label">Awaiting Review</span>
+          </div>
+          <div class="kpi-value" id="countReview">8</div>
+          <div class="kpi-subtext">Submitted for review</div>
+        </article>
+
+        <article class="kpi-card" data-filter="Completed">
+          <div class="kpi-header">
+            <span class="kpi-icon icon-green"><i class="fa-solid fa-circle-check"></i></span>
+            <span class="kpi-label">Completed</span>
+          </div>
+          <div class="kpi-value" id="countCompleted">96</div>
+          <div class="kpi-subtext text-green">Successfully completed</div>
+        </article>
+      </section>
+
+      <!-- 2. Search & Filters Panel -->
+      <section class="card filter-panel">
+        <div class="search-bar-row">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search by Test ID, Manufacturer, Model, or Serial Number..." />
+          </div>
+        </div>
+
+        <div class="filters-row">
+          <div class="filter-item">
+            <label for="filterStatus">Status</label>
+            <select id="filterStatus" class="custom-select">
+              <option value="All">All</option>
+              <option value="Draft">Draft</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Awaiting Review">Awaiting Review</option>
+              <option value="Completed">Completed</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="filterType">Instrument Type</label>
+            <select id="filterType" class="custom-select">
+              <option value="All">All</option>
+              <option value="Electronic Weighing Instrument">Electronic Weighing Instrument</option>
+              <option value="Platform Scale">Platform Scale</option>
+              <option value="Weighbridge">Weighbridge</option>
+              <option value="Other NAWI">Other NAWI</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="filterDate">Test Date</label>
+            <select id="filterDate" class="custom-select">
+              <option value="All">All</option>
+              <option value="Today">Today</option>
+              <option value="This Week">This Week</option>
+              <option value="This Month">This Month</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="filterResult">Result</label>
+            <select id="filterResult" class="custom-select">
+              <option value="All">All</option>
+              <option value="Pass">Pass</option>
+              <option value="Fail">Fail</option>
+              <option value="Under Evaluation">Under Evaluation</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="sortBy">Sort</label>
+            <select id="sortBy" class="custom-select">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="progress">Highest Progress</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn-clear-filters" id="btnClearFilters">
+            <i class="fa-solid fa-rotate-left"></i> Clear Filters
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. Main Tests Table Section -->
+      <section class="card table-card-full">
+        <div class="card-header-table">
+          <div class="table-title">
+            <h3>Registered Tests</h3>
+            <span class="count-pill" id="tableRecordCount">Showing 10 records</span>
+          </div>
+          <div class="table-tools">
+            <span class="subtle-note"><i class="fa-solid fa-info-circle"></i> Click any row or action to inspect details drawer</span>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="myTestsTable">
+            <thead>
+              <tr>
+                <th>Test ID</th>
+                <th>Instrument</th>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>Test Date</th>
+                <th>Progress</th>
+                <th>Current Stage</th>
+                <th>Status</th>
+                <th>Indicators</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="testsTableBody">
+              <!-- Dynamically populated rows via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 11. Pagination Bar -->
+        <div class="pagination-bar">
+          <div class="pagination-info" id="paginationInfo">
+            Showing 1–5 of 5 tests
+          </div>
+          <div class="pagination-controls">
+            <div class="rows-select-group">
+              <label for="rowsPerPage">Rows per page:</label>
+              <select id="rowsPerPage" class="custom-select-sm">
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+            <div class="page-buttons" id="pageButtons">
+              <button class="page-nav-btn" disabled><i class="fa-solid fa-angle-left"></i> Previous</button>
+              <button class="page-num active">1</button>
+              <button class="page-nav-btn" disabled>Next <i class="fa-solid fa-angle-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 8 & 9. Right-Side Sliding Test Details Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="details-drawer" id="detailsDrawer">
+    <div class="drawer-header">
+      <div>
+        <span class="drawer-badge" id="drawerStatusBadge">In Progress</span>
+        <h2 id="drawerTestId">NAWI-2026-014</h2>
+        <p id="drawerSubtitle">Apex Weigh Systems — AWS-3000</p>
+      </div>
+      <button class="btn-close-drawer" id="btnCloseDrawer" aria-label="Close drawer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-content">
+      <!-- Quick Metric Bar -->
+      <div class="drawer-progress-box">
+        <div class="d-flex-between">
+          <span class="subhead">Workflow Progress</span>
+          <strong id="drawerProgressVal">78%</strong>
+        </div>
+        <div class="progress-bar-lg">
+          <div class="fill" id="drawerProgressBar" style="width: 78%;"></div>
+        </div>
+        <div class="stage-tag">
+          Current Stage: <strong id="drawerStageName">Repeatability Test</strong>
+        </div>
+      </div>
+
+      <!-- Test Metadata Section -->
+      <div class="drawer-section">
+        <h4 class="section-title"><i class="fa-regular fa-clipboard"></i> Test Information</h4>
+        <div class="drawer-info-grid">
+          <div class="info-cell">
+            <label>Application No.</label>
+            <span id="drawerAppNo">LM/NAWI/2026/014</span>
+          </div>
+          <div class="info-cell">
+            <label>Test Date</label>
+            <span id="drawerDate">29 Sep 2026</span>
+          </div>
+          <div class="info-cell">
+            <label>Officer</label>
+            <span id="drawerOfficer">Dr. Ananya Sharma</span>
+          </div>
+          <div class="info-cell">
+            <label>Laboratory</label>
+            <span id="drawerLab">Regional Legal Metrology Laboratory</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instrument Specs Section -->
+      <div class="drawer-section">
+        <h4 class="section-title"><i class="fa-solid fa-scale-balanced"></i> Instrument Specifications</h4>
+        <div class="drawer-info-grid">
+          <div class="info-cell">
+            <label>Instrument Type</label>
+            <span id="drawerInstType">Electronic Weighing Instrument</span>
+          </div>
+          <div class="info-cell">
+            <label>Serial Number</label>
+            <span id="drawerSerial">AWS3K-26-01842</span>
+          </div>
+          <div class="info-cell">
+            <label>Accuracy Class</label>
+            <span id="drawerClass">Class III (Medium)</span>
+          </div>
+          <div class="info-cell">
+            <label>Capacity (Max / Min)</label>
+            <span id="drawerCap">Max: 300 kg | Min: 20 g</span>
+          </div>
+          <div class="info-cell">
+            <label>Scale Interval (e / d)</label>
+            <span id="drawerInterval">e: 100 g | d: 100 g</span>
+          </div>
+          <div class="info-cell">
+            <label>Verification Number (n)</label>
+            <span id="drawerN">3,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Documents & Evidence Counters -->
+      <div class="drawer-section">
+        <h4 class="section-title"><i class="fa-solid fa-paperclip"></i> Associated Records</h4>
+        <div class="indicators-tiles">
+          <div class="ind-tile">
+            <i class="fa-regular fa-file-pdf"></i>
+            <div>
+              <strong id="drawerDocCount">5</strong>
+              <span>Documents</span>
+            </div>
+          </div>
+          <div class="ind-tile">
+            <i class="fa-solid fa-camera"></i>
+            <div>
+              <strong id="drawerPhotoCount">8</strong>
+              <span>Photographs</span>
+            </div>
+          </div>
+          <div class="ind-tile">
+            <i class="fa-solid fa-chart-line"></i>
+            <div>
+              <strong id="drawerEvidenceCount">6</strong>
+              <span>Evidence Files</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Test Timeline -->
+      <div class="drawer-section">
+        <h4 class="section-title"><i class="fa-solid fa-timeline"></i> Test Execution Timeline</h4>
+        <ol class="drawer-timeline" id="drawerTimeline">
+          <!-- Populated dynamically based on test state -->
+        </ol>
+      </div>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="drawer-footer">
+      <button class="btn-primary btn-block" id="btnDrawerPrimaryAction">
+        Continue Evaluation <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- External Script -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.16.8/dist/umd/i18next.min.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/my-tests.js"></script>
+
+  <!-- Floating Chatbot Button -->
+  <button type="button" class="floating-chatbot-btn" aria-label="Open Chatbot Assistant" aria-expanded="false" aria-controls="chatbotPanel">
+    <i class="fa-regular fa-comments" aria-hidden="true"></i>
+    <span>Chat with AI</span>
+  </button>
+  <script src="../js/qa-assistant.js"></script>
+  <script src="../js/chat-widget.js"></script>
+</body>
+</html>

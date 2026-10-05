@@ -1,0 +1,63 @@
+.voice-status {
+  display: none;
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  background: #f8fafc;
+  font-size: 0.9rem;
+}
+
+.voice-status.is-visible {
+  display: block;
+}
+
+.voice-status.is-success {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.voice-status.is-warning {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.voice-status.is-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.voice-status.is-recording {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.voice-status details {
+  margin-top: 8px;
+}
+
+.voice-status summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.voice-status details p {
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+
+.btn-mic.is-recording {
+  color: #dc2626;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.btn-mic.is-busy {
+  cursor: wait;
+  opacity: 0.65;
+}
