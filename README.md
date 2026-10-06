@@ -781,9 +781,9 @@ To ensure complete technical transparency during hackathon evaluation, the follo
 | Team Identification | Role |
 | :--- | :--- |
 | *Arya Pritam Nangude* | 💻 Full-Stack development |
-| *Atreya Ashish Kshirsagar* | 🌐 Frontend development & RAG Intelligent Assistance |
+| *Atreya Ashish Kshirsagar* | 🌐 Frontend Lead Developer, UI/UX Designer & RAG Developer |
 | *Gayatri Mukchand Karkhile* |  💻 Full-Stack development |
-| *Jiya Irfan Shahadivan* | 🎨 UI/UX Designing & Presentation |
+| *Jiya Irfan Shahadivan* | 🎨 UI/UX Designer & Presentation |
 | *Kapil Chandrashekhar Sorte* |  🖥️ Desktop Application development (Electron) |
 | *Sakib Samir Tamboli* |  🤖 AI/ML |
 
