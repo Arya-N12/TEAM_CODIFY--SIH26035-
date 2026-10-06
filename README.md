@@ -516,10 +516,10 @@ TEAM_CODIFY_SIH26035-main/
 ### 📷 1. Instrument Photographic Evidence Assets
 The repository contains sample physical test assets utilized in the review workspace for nameplate and setup validation:
 
-| Nameplate Specification Plate | Overall Front Instrument View | Overall Side Instrument View |
+| Nameplate Specification Plate | Identification Plate View | Overall Side Instrument View |
 | :---: | :---: | :---: |
-| ![Nameplate Evidence](Website/Frontend/img/Name-plate.jpeg) | ![Front View Evidence](Website/Frontend/img/Front-view.jpeg) | ![Side View Evidence](Website/Frontend/img/side-view.jpeg) |
-| *Verified nameplate displaying capacity, class, and interval parameters.* | *Front profile of unit under test used for structural verification.* | *Side profile verifying leveling, pan stability, and cable clearance.* |
+| ![Nameplate Evidence](Website/Frontend/img/Name-plate.jpeg) | ![Identification Plate View ](Website/Frontend/img/Identification-plate.jpeg) | ![Side View Evidence](Website/Frontend/img/side-view.jpeg) |
+| *Verified nameplate displaying capacity, class, and interval parameters.* | *Identification Plate view for Manufacturer information and technical specifications* | *Side profile verifying leveling, pan stability, and cable clearance.* |
 
 ### 🖥️ 2. Operational Workspaces & Dashboards (Demonstrated in Codebase)
 * **Metrology Evaluator Review Workspace (`review-workspace.html`):** Features tabbed navigation across Instrument & Nameplate (with OCR mismatch tables), Test Observations (eccentricity corner results), Compliance & MPE (deterministic verdict), Anomaly Sentinel, Evidence Checklist, and Explainable Compliance Trace.
